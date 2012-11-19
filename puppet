@@ -1,0 +1,24 @@
+http://www.how2centos.com/centos-6-puppet-install/
+
+vi /etc/yum.repos.d/puppet.repo
+
+[puppetlabs]
+name=Puppet Labs Packages
+baseurl=http://yum.puppetlabs.com/el/$releasever/products/$basearch/
+enabled=1
+gpgcheck=1
+gpgkey=http://yum.puppetlabs.com/RPM-GPG-KEY-puppetlabs
+
+rpm -Uvh http://download.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-7.noarch.rpm
+
+yum install puppet-server
+
+yum install puppet
+
+ex:
+
+# demo.pp
+package { "zsh": 
+        ensure => installed 
+}
+
