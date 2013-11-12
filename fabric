@@ -1,0 +1,4 @@
+Error AttributeError: 'module' object has no attribute 'HAVE_DECL_MPZ_POWM_SEC' on CentOS 6.4 was fixed by:
+
+pip uninstall pycrypto
+pip install PyCrypto==2.3
