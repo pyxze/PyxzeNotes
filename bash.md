@@ -12,3 +12,7 @@ ln -sf /usr/share/zoneinfo/America/Chicago /etc/localtime
 find -type f -exec chmod 644 {} \;
 
 find -type d -exec chmod 755 {} \;
+
+http://www.cyberciti.biz/faq/unix-linux-bash-history-display-date-time/
+
+    echo 'export HISTTIMEFORMAT="%d/%m/%y %T "' >> ~/.bash_profile
