@@ -1,3 +1,6 @@
 # Add epel repo -- so you can install tmux
 su -c 'rpm -Uvh http://download.fedoraproject.org/pub/epel/6/i386/epel-release-6-8.noarch.rpm'
 yum -y install tmux
+
+# instructions for installing mysql 5.6
+http://sharadchhetri.com/2013/12/26/install-mysql-server-5-6-in-centos-6-x-and-red-hat-6-x-linux/
