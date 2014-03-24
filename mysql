@@ -4,3 +4,4 @@ collation-server = utf8_general_ci
 character-set-server = utf8
 
 http://www.mysqltutorial.org/mysql-stored-function/
+http://www.kbedell.com/2009/03/02/a-simple-example-of-a-mysql-stored-procedure-that-uses-a-cursor/
