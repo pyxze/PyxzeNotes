@@ -2,3 +2,5 @@ suggested edits to /etc/my.cnf:
 [mysqld]
 collation-server = utf8_general_ci
 character-set-server = utf8
+
+http://www.mysqltutorial.org/mysql-stored-function/
