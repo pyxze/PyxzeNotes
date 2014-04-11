@@ -1,0 +1,1 @@
+urls = _.chain(reddit.data.children).pluck('data').pluck('url').value()
