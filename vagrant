@@ -1,1 +1,2 @@
 sudo /etc/init.d/vboxadd setup
+vagrant plugin install vagrant-vbguest
