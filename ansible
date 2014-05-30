@@ -1,0 +1,19 @@
+sudo apt-get install ansible
+sudo echo "127.0.0.1" > /etc/ansible/hosts
+ansible-playbook playbook.yml --connection=local
+
+https://github.com/ansible/ansible-examples/blob/master/lamp_simple/roles/web/tasks/install_httpd.yml
+
+---
+- hosts: all
+  gather_facts: False
+  tasks:
+    - name: Install packages
+      apt: name={{ item }} state=present
+      with_items:
+        - apache2
+        - mysql-server
+        - php5-cli
+        - php5-gd
+        - php5-mcrypt
+        - git
