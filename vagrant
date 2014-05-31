@@ -6,3 +6,5 @@ sudo /etc/init.d/vboxadd setup
 // If you get the guest additions error...
 vagrant plugin install vagrant-vbguest
 
+// Export vagrant box
+vagrant package --base my-virtual-machine
