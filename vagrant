@@ -1,2 +1,5 @@
+vagrant box add ubuntu1404 http://cloud-images.ubuntu.com/vagrant/trusty/current/trusty-server-cloudimg-amd64-vagrant-disk1.box
+
 sudo /etc/init.d/vboxadd setup
 vagrant plugin install vagrant-vbguest
+
