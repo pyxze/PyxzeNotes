@@ -1,4 +1,4 @@
-apt-get update && apt-get upgrade
+apt-get update && apt-get -y upgrade
 apt-get install ansible
 echo "127.0.0.1" > /etc/ansible/hosts
 ansible-playbook playbook.yml --connection=local
