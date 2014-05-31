@@ -1,1 +1,3 @@
 composer create-project laravel/laravel laravel --prefer-dist
+cd laravel
+chmod -R 777 app/storage
