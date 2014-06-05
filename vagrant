@@ -8,3 +8,7 @@ vagrant plugin install vagrant-vbguest
 
 // Export vagrant box
 vagrant package --base my-virtual-machine
+
+Windows Environment
+
+Add C:\Program Files\Oracle\VirtualBox\VBoxManage (or %VBOX_INSTALL_PATH%\VBoxManage) to Path found under System Properties>Environment Variables
