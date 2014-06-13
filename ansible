@@ -1,15 +1,20 @@
 apt-get update && apt-get -y upgrade
-apt-get -y install ansible
-echo "127.0.0.1" > /etc/ansible/hosts
-ansible-playbook playbook.yml --connection=local
+apt-get -y install git ansible && echo "127.0.0.1" > /etc/ansible/hosts
+git clone https://github.com/pyxze/ansible.git
+cd ansible
+ansible-playbook common.yml --connection=local
 
 https://github.com/ansible/ansible-examples/blob/master/lamp_simple/roles/web/tasks/install_httpd.yml
 
 ---
 - hosts: all
-  gather_facts: False
+  gather_facts: false
   tasks:
-    - name: Install packages
+    - name: update & upgrade
+      shell: apt-get update && apt-get -y upgrade
+    - name: set timezone
+      shell: echo "Etc/UTC" > /etc/timezone && dpkg-reconfigure --frontend noninteractive tzdata
+    - name: install packages
       apt: name={{ item }} state=present
       with_items:
         - apache2
@@ -17,7 +22,21 @@ https://github.com/ansible/ansible-examples/blob/master/lamp_simple/roles/web/ta
         - php5-cli
         - php5-gd
         - php5-mcrypt
+        - php5-mysql
+        - php5-curl
+        - libapache2-mod-php5
+        - libapache2-mod-suphp
         - git
+        - unzip
+        - emacs24
+    - name: enable php5-mcrypt
+      shell: php5enmod mcrypt
+    - name: enable mod rewrite
+      shell: a2enmod rewrite
+    - name: enable public_html
+      shell: a2enmod userdir
+    - name: restart apache
+      shell: service apache2 restart
     - name: download composer
       shell: curl -sS https://getcomposer.org/installer | php
     - name: install composer
@@ -28,3 +47,10 @@ https://github.com/ansible/ansible-examples/blob/master/lamp_simple/roles/web/ta
       command: chmod +x boris.phar
     - name: install boris
       command: mv boris.phar /usr/local/bin/boris
+
+/etc/suphp/suphp.conf
+;Check wheter script is within DOCUMENT_ROOT
+check_vhost_docroot=false
+      
+/etc/apache2/mods-enabled/php5.conf
+# To re-enable PHP in user directories comment the following lines
