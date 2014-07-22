@@ -1,0 +1,3 @@
+wget -r -R jpg,jpeg,png,gif,tif,pdf,ppt,mp3 www.cprit.state.tx.us
+
+wget --spider --force-html -r www.cprit.state.tx.us 2>&1 | grep '^--' | awk '{ print $3 }' | grep -v '\.\(css\|js\|png\|gif\|jpg\|PDF\|doc\|rtf\|pptx\|xls\|pdf\)$' | sort | uniq
