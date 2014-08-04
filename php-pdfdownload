@@ -110,3 +110,23 @@ script.js
             });
 
         });
+        
+~
+
+debugging
+
+var date = (new Date()).getTime();
+
+var data = {
+  date: date,
+  html: $('#map').html()
+};
+
+$.ajax({
+  type: "POST",
+  url: "/scripts/generatePDF.php",
+  data: data
+})
+.done(function() {
+  window.open('/scripts/get.php?file=' + date + '.pdf');
+});
