@@ -1,0 +1,112 @@
+get.php
+
+<?php
+
+$file = $_GET["file"];
+if (file_exists('/var/www/html/tmp/' . $file)) {
+    if (preg_match('/MSIE 7/', $_SERVER['HTTP_USER_AGENT']))
+    {
+        print('<html><head></head><body><p>Right click <a href="/tmp/' . $file . '">here</a> and choose "Save Target As..." to download your file.</p></body></html>');
+    }
+    else if (preg_match('/MSIE 8/', $_SERVER['HTTP_USER_AGENT']))
+    {
+        print('<html><head></head><body><p>Right click <a href="/tmp/' . $file . '">here</a> and choose "Save Target As..." to download your file.</p></body></html>');
+    }
+    else
+    {
+        header('Content-Description: File Transfer');
+        header('Content-Type: application/octet-stream');
+        header("Content-Type: application/force-download");
+        header('Content-Disposition: attachment; filename=' . urlencode(basename($file)));
+        // header('Content-Transfer-Encoding: binary');
+        header('Expires: 0');
+        header('Cache-Control: must-revalidate, post-check=0, pre-check=0');
+        header('Pragma: public');
+        header('Content-Length: ' . filesize('/var/www/html/tmp/' . $file));
+        ob_clean();
+        flush();
+        readfile('/var/www/html/tmp/' . $file);
+        exit;
+    }
+}
+
+~
+
+generateDatatablesPDF.php
+
+<?php
+
+require_once 'vendor/knplabs/knp-snappy/src/autoload.php';
+
+use Knp\Snappy\Pdf;
+
+  $snappy = new Pdf('/usr/bin/wkhtmltopdf-amd64');
+
+$epoch = substr($_POST['date'], 0, 10);
+$dt = new DateTime("@$epoch");
+
+$html = [];
+
+array_push($html, "<div style='width: 290px; margin: 0 auto;'><img width='290px' src='logo.png'></div>");
+
+$asInitVals = json_decode($_POST['asInitVals']);
+$inputs = json_decode($_POST['inputs']);
+array_push($html, "<p>Search terms:</p>");
+foreach ($inputs as $key=>$input) {
+    array_push($html, "<div style='float: left; text-align: right; width: 100px;'>" . $asInitVals[$key] . ":</div><div style='float: right; display: inline-block; width: 570px;'>" . $input . "</div>");
+    array_push($html, "<div style='clear: both;'></div>");
+}
+
+array_push($html, "<p>Search results:</p>");
+
+$rows = json_decode($_POST['json']);
+
+#foreach ($rows as $row) {
+#    array_push($html, '<tr>');
+#    for ($i = 0; $i < 9; $i++) {
+#        array_push($html, '<td>' . $row[$i] . '</td>');
+#    }
+#    array_push($html, "</td></tr>\r\n");
+#}
+
+foreach ($rows as $row) {
+    for ($i = 0; $i < 9; $i++) {
+        array_push($html, "<div style='width: 100px;'>" . $row[$i] . "</div>");
+    }
+    array_push($html, "<div style='clear: both;'></div>");
+}
+
+$snappy->generateFromHtml(join("", $html), '/var/www/html/tmp/' . $_POST['date'] . '.pdf');
+
+~
+
+script.js
+
+        $("#generatePDF").click( function() {
+
+            var date = (new Date()).getTime();
+            var inputs = [];
+            for (var i = 0, len = $("#filter_bar input").length; i < len; i++) {
+                if ($("#filter_bar input")[i].value == asInitVals[i]) {
+                    inputs.push("");
+                }
+                else{
+                    inputs.push($("#filter_bar input")[i].value);
+                }
+            }
+            var data = { date: date,
+                         json: JSON.stringify(oTable._('tr', {"filter":"applied"})).replace(/<[^>]*>/g, ""),
+                         asInitVals: JSON.stringify(asInitVals),
+                         inputs: JSON.stringify(inputs)
+                       }
+
+            $.ajax({
+            type: "POST",
+            url: "/scripts/generateDatatablesPDF.php",
+            data: data
+            })
+            .done(function() {
+                window.open('/scripts/get.php?file=' + date + '.pdf');
+            });
+
+        });
