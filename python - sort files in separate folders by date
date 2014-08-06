@@ -1,0 +1,30 @@
+# This script was written to facilitate listing files
+# for easy removal. It parses the output of find so
+# that the files are all listed in date sorted order.
+
+# from http://stackoverflow.com/questions/1094841/reusable-library-to-get-human-readable-version-of-file-size
+def sizeof_fmt(num):
+  for x in ['bytes','KB','MB','GB']:
+    if num < 1024.0 and num > -1024.0:
+      return "%3.1f%s" % (num, x)
+    num /= 1024.0
+  return "%3.1f%s" % (num, 'TB')
+
+import subprocess
+output=subprocess.Popen(["find", "."], stdout=subprocess.PIPE, stderr=subprocess.PIPE).communicate()
+split = output[0].split('\n')
+
+zoo = []
+
+import re
+for i in split:
+  m = re.match('\D+\d+\D+(\d+).+', i)
+  if m:
+    zoo.append([i, m.groups()])
+
+from operator import itemgetter, attrgetter
+zoosort = sorted(zoo, key=itemgetter(1))
+
+import os
+for i in zoosort:
+  print "rm ", i[0], sizeof_fmt(os.stat(i[0]).st_size)
