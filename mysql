@@ -9,3 +9,7 @@ http://www.kbedell.com/2009/03/02/a-simple-example-of-a-mysql-stored-procedure-t
 in mysql variables in stored procedures are declared and typed
 outside of stored procedures variables are just set and untyped
 http://dba.stackexchange.com/questions/51361/declare-variable-mysql
+
+[client]
+user=user
+password="password"
