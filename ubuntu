@@ -1,3 +1,18 @@
 # install mysql 5.6
 
 https://rtcamp.com/tutorials/mysql/mysql-5-6-ubuntu-12-04/
+
+# remove password for software update
+# http://yesanotherubuntublog.blogspot.com/2011/07/how-to-disable-authentication-for.html
+
+gksudo gedit /usr/share/polkit-1/actions/org.debian.apt.policy
+
+3. Hold CTRL and hit F, in the search box copy and paste this:
+
+org.debian.apt.install-or-remove-packages
+
+4. Under the line that says <defaults>, edit the next 3 lines to this:
+
+<allow_any>yes</allow_any>
+<allow_inactive>yes</allow_inactive>
+<allow_active>yes</allow_active>
