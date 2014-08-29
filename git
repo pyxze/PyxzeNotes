@@ -1,3 +1,4 @@
 git config --global user.name "Jason Romero"
 git config --global user.email jason@pyxze.com
 
+git diff --name-only master
