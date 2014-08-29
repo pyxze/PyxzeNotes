@@ -1,0 +1,17 @@
+monitoring tools
+
+http://www.cyberciti.biz/tips/top-linux-monitoring-tools.html
+
+#6: free - Memory Usage
+#7: iostat - Average CPU Load, Disk Activity
+
+sar examples
+
+http://www.thegeekstuff.com/2011/03/sar-examples/
+
+1. CPU Usage of ALL CPUs (sar -u)
+3. Memory Free and Used (sar -r)
+4. Swap Space Used (sar -S)
+5. Overall I/O Activities (sar -b)
+8. Reports run queue and load average (sar -q)
+
