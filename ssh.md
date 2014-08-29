@@ -1,4 +1,0 @@
-    Host dev
-        HostName dev.example.com
-        Port 22000
-        User fooey
