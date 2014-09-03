@@ -4,3 +4,7 @@ Host dev
     HostName dev.example.com
     Port 22000
     User fooey
+
+http://apple.stackexchange.com/questions/35524/what-can-i-do-when-my-ssh-session-is-stuck
+
+enter, ~ (tilde), . (period)
