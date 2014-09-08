@@ -15,5 +15,12 @@ http://www.thegeekstuff.com/2011/03/sar-examples/
 5. Overall I/O Activities (sar -b)
 8. Reports run queue and load average (sar -q)
 
+
+# recursively set permissions
+
 find -type f -exec chmod 644 {} \;
 find -type d -exec chmod 755 {} \;
+
+# reboot now
+
+shutdown -r now
