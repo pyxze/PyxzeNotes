@@ -1,3 +1,18 @@
+CREATE TABLE album(
+  id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  title VARCHAR(100),
+  artist VARCHAR(100)
+);
+
+CREATE TABLE track(
+  id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  album_id INT(6),
+  disk INT,
+  pos INTEGER,
+  song VARCHAR(255),
+  FOREIGN KEY (id) REFERENCES album(id)
+);
+
 suggested edits to /etc/my.cnf:
 [mysqld]
 collation-server = utf8_general_ci
