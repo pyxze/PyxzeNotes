@@ -1,0 +1,57 @@
+webserver-configure.yml
+---
+- hosts: '{{ hosts }}'
+  vars:
+    user: root
+    root_db_password: $PASSWORD(credentials/$ansible_hostname/mysqlpassword)
+  vars_files:
+    - webserver-packages.yml
+  tasks:
+  - name: Grab epel repo
+    action: command wget http://dl.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.noarch.rpm -P /tmp
+  - name: Grab remi repo -- for php 5.4
+    action: command wget http://rpms.famillecollet.com/enterprise/remi-release-6.rpm -P /tmp
+  - name: Install epel and remi repos
+    action: command rpm -Uvh /tmp/remi-release-6*.rpm /tmp/epel-release-6*.rpm --nopgp
+    ignore_errors: True
+  - name: Copy over enabled remi repo file
+    action: template src=templates/remi.repo dest=/etc/yum.repos.d/remi.repo
+  - name: Copy over MariaDB.repo
+    action: template src=templates/MariaDB.repo dest=/etc/yum.repos.d/MariaDB.repo
+#  - name: install packages
+#    action: yum pkg=$item state=present disable_gpg_check=yes
+#    with_items: packages
+  - name: ensure apache is running
+    action: service name=httpd state=started
+  - name: Ensure Apache will start on reboot
+    action: command chkconfig httpd on
+  - name: ensure mysql-server is running
+    action: service name=mysql state=started
+  # The following tasks go through the steps of securing the initial mysql
+  # installation per https://dev.mysql.com/doc/refman/5.5/en/default-privileges.html
+  # using the tasks from https://coderwall.com/p/yez9yw
+  - name: update mysql root password for all root accounts
+    mysql_user: name=root host=localhost password=$root_db_password
+  - name: copy .my.cnf file with root password credentials
+    template: src=templates/my.cnf-root dest=/root/.my.cnf owner=root mode=0600
+  - name: copy my.cnf file with utf8 and innodb defaults
+    template: src=templates/my.cnf-server dest=/etc/my.cnf owner=root mode=0600
+  - name: update mysql root password for all root accounts
+    mysql_user: name=root host=$item password=$root_db_password
+    with_items:
+      - $ansible_hostname
+      - 127.0.0.1
+      - ::1
+  - name: ensure anonymous users are not in the database
+    mysql_user: name='' host=$item state=absent
+    with_items:
+      - localhost
+      - $inventory_hostname
+  - name: remove the test database
+    mysql_db: name=test state=absent
+  - name: enable ssh agent forwarding
+    action: shell sed -i "s/#AllowAgentForwarding yes/AllowAgentForwarding yes/" /etc/ssh/sshd_config
+  - name: restart sshd
+    action: service name=sshd state=restarted
+  - name: Copy over python boto config file needed for s3 module
+    action: template src=templates/boto dest=/root/.boto
