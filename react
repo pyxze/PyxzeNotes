@@ -1,0 +1,130 @@
+<script src="http://fb.me/react-0.12.2.js"></script>
+<script src="http://fb.me/JSXTransformer-0.12.2.js"></script>
+<script src="http://code.jquery.com/jquery-1.10.0.min.js"></script>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/showdown/0.3.1/showdown.min.js"></script>
+
+<div id="input"></div>
+
+<div id="content"></div>
+  
+<script>
+var data = [
+  {"author": "Pete Hunt", "text": "This is one comment"},
+  {"author": "Jordan Walke", "text": "This is *another* comment"}
+];
+</script>
+
+<script type="text/jsx">
+var CommentBox = React.createClass({
+  render: function() {
+    return (
+      <div className="commentBox">
+        Hello, world! I am a CommentBox.!!
+      </div>
+    );
+  }
+});
+
+var Comment = React.createClass({
+  render: function() {
+    return (
+      <div className="comment">
+        <h2 className="commentAuthor">
+          {this.props.author}
+        </h2>
+		<p>
+			{this.props.children}
+		</p>
+      </div>
+    );
+  }
+});
+
+var CommentList = React.createClass({
+  render: function() {
+	var value = this.props.value;
+    var commentNodes = this.props.data.map(function (comment) {
+	  if (!comment.author.includes(value)) return;
+      return (
+        <Comment author={comment.author}>
+			{value}
+          {comment.text}
+        </Comment>
+      );
+    });
+    return (
+      <div className="commentList">
+		<h1>{this.props.value}</h1>
+        {commentNodes}
+      </div>
+    );
+  }
+});
+
+React.render(
+  <CommentList data={data}/>,
+  document.getElementById('content')
+);
+
+var Input = React.createClass({
+  getInitialState: function() {
+    return {value: 'Hello!'};
+  },
+  handleChange: function(event) {
+    this.setState({value: event.target.value});
+  },
+  render: function() {
+    var value = this.state.value;
+	return (
+	<p>
+		<input type="text" value={value} onChange={this.handleChange} />
+		{value}
+		<CommentList data={data} value={value}/></p>
+	);
+  }
+});
+
+React.render(
+  <Input />,
+  document.getElementById('input')
+);
+
+</script>
+
+
+
+<label>Quick Search: <input id="search" type="text"></label>
+
+<table>
+    <tr>
+        <td>FredF</td>
+        <td>Fred Flintstone</td>
+        <td><input type="checkbox" name="userId" value="@user.UserId" /></td>
+    </tr>
+    <tr>
+        <td>BarneyR</td>
+        <td>Barney Rubble</td>
+        <td><input type="checkbox" name="userId" value="@user.UserId" /></td>
+    </tr>
+    <tr>
+        <td>FredF</td>
+        <td>Fred Flintstone</td>
+        <td><input type="checkbox" name="userId" value="@user.UserId" /></td>
+    </tr>
+</table>
+
+<script>
+
+var $rows = $("tr");
+
+$("#search").keyup(function() {
+    var val = $.trim(this.value);
+    if (val === "")
+        $rows.show();
+    else {
+        $rows.hide();
+        $rows.has("td:contains(" + val + ")").show();
+    }
+});
+
+</script>
