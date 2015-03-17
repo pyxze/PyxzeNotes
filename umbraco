@@ -1,0 +1,15 @@
+@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
+@{
+    Layout = null;
+}
+
+@{
+    var page = Umbraco.Content(1094);
+}
+
+<h3>@page.PropertyAlias</h3>
+
+@foreach (var child in page.Children) {
+    <a href="@child.Url">@child.Name</a>
+}
+
