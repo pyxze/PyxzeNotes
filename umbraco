@@ -36,11 +36,11 @@ margin-left: 40px;
 
 @foreach (var child in page.Children) {
     <p>@child.Name</p>
-    var panels = child.Picker.Split(',');
+    var panels = child.MultinodeTreepicker.Split(',');
     foreach (var panel in panels) {
         var panelNode = Umbraco.Content(panel);
         <p class="indent">@panelNode.DisplayName</p>
-		var appointees = panelNode.Picker.Split(',');
+		var appointees = panelNode.MultinodeTreepicker.Split(',');
 		foreach (var appointee in appointees) {
 			var appointeeNode = Umbraco.Content(appointee);
 			<p class="doubleindent">@appointeeNode.Name</p>
