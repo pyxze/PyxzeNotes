@@ -1,0 +1,19 @@
+<script>
+$('table').each(function() {
+  $(this).children('tbody').children('tr').children('.rfa-list-tbl-body-datecell-closed').first().parent().before('<tr><td colspan="6" class="rfa-list-tbl-body-datecell"><p class="toggleRFAs myButton" style="text-align: center; margin: 10px;cursor: pointer;">Show closed RFAs</p></td></tr>');
+})
+$('.rfa-list-tbl-body-datecell-closed').parent().toggle();
+
+
+$( ".toggleRFAs" ).on( "click", function() {
+  $(this).parent().parent().parent().children().children('.rfa-list-tbl-body-datecell-closed').parent().toggle();
+  if ( $(this).text() == "Show closed RFAs" )
+  {
+    $(this).text("Hide closed RFAs");
+  }
+  else
+  {
+    $(this).text("Show closed RFAs");
+  }
+});
+</script>
