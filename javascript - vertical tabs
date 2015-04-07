@@ -1,0 +1,134 @@
+ <style>
+ 	#tabs {
+		position: relative;
+		float: left;
+		width: 880px;
+		height: 255px;
+		margin: 0;
+		background-color: #ffffff;
+		border: 0;
+	}
+	.ui-tabs,
+	.ui-tabs .ui-tabs-nav,
+	.ui-tabs .ui-tabs-nav li,
+	.ui-tabs .ui-tabs-nav li.ui-tabs-active,
+	li.ui-state-default.ui-corner-left
+	{
+		padding: 0;
+		margin: 0 0 1px 0;
+		border: 0;
+		border-radius: 0;
+	}
+	.ui-tabs .ui-tabs-nav .ui-tabs-anchor
+	{
+		padding: 15px 0 0px 20px;
+	}
+	li.ui-state-default.ui-corner-left
+	{
+		background-color: transparent;
+		background-image: url("/images/layout/featured-background.png");
+		background-repeat: no-repeat;
+		background-position: left -51px;
+	}
+	li.ui-state-default.ui-corner-left:last-child
+	{
+		-webkit-border-bottom-left-radius: 10px;
+		-moz-border-radius-bottomleft: 10px;
+		border-bottom-left-radius: 10px;
+	}
+	li.ui-state-default.ui-corner-left:hover
+	{
+		border: 0;
+		background-color: transparent;
+		background-image: url("/images/layout/featured-background.png");
+		background-repeat: no-repeat;
+		background-position: left top;
+	}
+	.ui-tabs-vertical { width: 55em; }
+	.ui-tabs-vertical .ui-tabs-nav {
+		float: left;
+		width: 207px;
+	}
+	.ui-tabs-vertical .ui-tabs-nav li {
+		clear: left;
+		width: 100%;
+		height: 50px;
+	}
+	.ui-tabs-vertical .ui-tabs-nav li a { 
+		display:block;
+		width: 190px;
+		text-decoration: none;
+		color: #ffffff;
+		font-size: 14px;
+		font-weight: bold;
+	}
+	.ui-tabs-vertical .ui-tabs-nav li.ui-tabs-active { }
+	.ui-tabs-vertical .ui-tabs-panel { float: right; }
+	li.ui-state-default {
+		display: block;
+		height: 50px;
+		width: 187px;
+	}
+
+	.ui-tabs .ui-tabs-panel {
+		padding: 0;
+	}
+ </style>
+ 
+<div id="tabs">
+  <ul>
+    <li><a href="#research">Research</a></li>
+    <li><a href="#prevention">Prevention</a></li>
+    <li><a href="#product-development">Product Development</a></li>
+	<li><a href="#oversight-committee">Oversight Committee</a></li>
+	<li><a href="#compliance">Compliance</a></li>
+  </ul>
+  <div id="research">
+    <div class="photo">
+		<img src="/images/uploads/homepage-research-bg.jpg" alt="">
+	</div>
+  </div>
+  <div id="prevention">
+    <div class="photo">
+		<img src="/images/uploads/homepage-prevention-bg_1.jpg" alt="">
+	</div>
+  </div>
+  <div id="product-development">
+	<div class="photo">
+		<img src="/images/uploads/homepage-commercialization-bg_1.jpg" alt="">
+	</div>
+  </div>
+  <div id="oversight-committee">
+	<div class="photo">
+		<img src="/images/uploads/homepage-board-bg_1.jpg" alt="">
+	</div>
+  </div>
+  <div id="compliance">
+	<div class="photo">
+		<img src="/images/uploads/homepage-compliance.jpg" alt="">
+	</div>
+  </div>  
+</div>
+
+ <script>
+	$(function() {
+		$( "#tabs" ).tabs({
+		  event: "mouseover"
+		});
+	});
+	
+  $(function() {
+    $( "#tabs" ).tabs().addClass( "ui-tabs-vertical ui-helper-clearfix" );
+    $( "#tabs li" ).removeClass( "ui-corner-top" ).addClass( "ui-corner-left" );
+  });
+  
+  $(function() {
+//	$('#ui-id-1').attr('href', '/research');
+	$('#ui-id-1').on("click", function() { window.location = "/research/" });
+	$('#ui-id-2').on("click", function() { window.location = "/prevention/" });
+	$('#ui-id-3').on("click", function() { window.location = "/productdevelopment/" });
+	$('#ui-id-4').on("click", function() { window.location = "/about-cprit/oversightcommittee/" });
+	$('#ui-id-5').on("click", function() { window.location = "/about-cprit/ethics-and-compliance/" });
+  });
+  
+ </script>
