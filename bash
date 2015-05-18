@@ -1,3 +1,11 @@
+alias ..='cd ..'
+alias ...='cd ../..'
+alias ~='cd ~'
+alias ls='ls -al'
+alias ls='ls -FlaG'
+alias ll='tree --dirsfirst -ChFupDaLg 1'
+
+
 PS1="\n(\u@\h) \w\n> "
 
 (http://www.maketecheasier.com/8-useful-and-interesting-bash-prompts/)
