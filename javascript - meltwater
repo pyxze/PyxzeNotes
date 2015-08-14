@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Meltwater</title>
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+</head>
+<body>
+
+<textarea id="meltwaterIn"></textarea>
+
+<p id="meltwaterOut"></p>
+
+<p id="meltwaterInfo"></p>
+
+<script>
+    var meltwaterIn;
+    var meltwaterOut = [];
+    var meltwaterInfo = [];
+    $('#meltwaterIn').on('input', function() {
+        var meltwaterIn = $('#meltwaterIn').val();
+        meltwaterIn = meltwaterIn.split("\n");
+        for (i = 0; i < meltwaterIn.length; i++) {
+            var firstNameWithInitials;
+            var firstNameWithoutInitials;
+            var firstNameBuffer;
+            var firstName = meltwaterIn[i].split("\t")[0].trim();
+            var lastName = meltwaterIn[i].split("\t")[1].trim();
+
+            // Process name if it is not N/A and does not contain Pending.
+            if ((firstName != "N/A") && (lastName.indexOf("Pending") == -1)) {
+                // Remove periods, trim spaces, and add a space to capitals without a preceding space or hyphen.
+                firstName = firstName.replace(/\./g, "");
+                for (j = 1; j < firstName.length; j++){
+                    if ((firstName[j] == firstName[j].toUpperCase()) && (firstName[j] != " ") && (firstName[j] != "-")) {
+                        if (((firstName[j - 1] != " ") && (firstName[j - 1] != "-"))) {
+                            firstName = firstName.slice(0, j) + " " + firstName.slice(j);
+                            meltwaterInfo.push(firstName);
+                        }
+                    }
+                }
+                firstName = firstName.split(" ");
+
+                // Process with initials by adding periods to single characters.
+                firstNameWithInitials = "";
+                firstNameBuffer = "";
+                for (j = 0; j < firstName.length; j++){
+                    if (firstName[j].toString().length == 1){
+                        firstNameBuffer = firstName[j] + ".";
+                    }
+                    else {
+                        firstNameBuffer = firstName[j];
+                    }
+                    if (j == 0) {
+                        firstNameWithInitials = firstNameBuffer;
+                    }
+                    else {
+                        firstNameWithInitials = firstNameWithInitials + " " + firstNameBuffer;
+                    }
+                }
+                meltwaterOut.push('"' + firstNameWithInitials + " " + lastName + '"');
+
+                // Process without initials by dropping single characters.
+                firstNameWithoutInitials = "";
+                firstNameBuffer = "";
+                for (j = 0; j < firstName.length; j++){
+                    firstNameBuffer = firstName[j];
+                    if (firstName[j].toString().length > 1){
+                        if (j == 0) {
+                            firstNameWithoutInitials = firstNameBuffer;
+                        }
+                        else {
+                            if (firstNameWithoutInitials == "") {
+                                firstNameWithoutInitials = firstNameBuffer;
+                            }
+                            else {
+                                firstNameWithoutInitials = firstNameWithoutInitials + " " + firstNameBuffer;
+                            }
+                        }
+                    }
+                }
+
+                // Add firstNameWithoutInitials to meltwaterOut if firstNameWithoutInitials is not blank,
+                // and is not the same as firstNameWithInitials.
+                if (firstNameWithoutInitials != "" && firstNameWithoutInitials != firstNameWithInitials) {
+                    meltwaterOut.push('"' + firstNameWithoutInitials + " " + lastName + '"');
+                }
+            }
+        }
+
+        // Output parsed list and first names that were modified.
+        $('#meltwaterOut').text('"cancer" near/20 (' + meltwaterOut.join(" OR ") + ')');
+        $('#meltwaterInfo').text("Modified first names: " + meltwaterInfo.join(", "));
+    });
+</script>
+
+</body>
+</html>
