@@ -15,10 +15,9 @@
 
 <script>
     $('#meltwaterIn').on('input', function() {
-        var meltwaterIn;
+        var meltwaterIn = $('#meltwaterIn').val().split("\n");
         var meltwaterOut = [];
         var meltwaterInfo = [];
-        var meltwaterIn = $('#meltwaterIn').val().split("\n");
         var meltwaterBuffer = [];
         for (i = 0; i < meltwaterIn.length; i++) {
             if ($.inArray(meltwaterIn[i], meltwaterBuffer) < 0) {
