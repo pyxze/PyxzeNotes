@@ -1,0 +1,11 @@
+•	Dreamweaver does a good job of converting pasted Word content to basic HTML.
+•	WinSCP supports use of a key, though PEM keys, such as Amazon provides, do have to be converted to PPK using PuTTYgen.
+•	IrfanView also allows you to stitch images together top to bottom, such as for portal documents.
+•	Cygwin provides a reasonable proxy of the *nix command line.
+•	LINQPad gives you a scratch pad to enter in arbitrary C# code.
+•	CloudBerry is a good client for connecting to Amazon S3.
+•	Bulk Rename Utility does a good job at bulk renaming.
+•	Greenshot is an excellent tool for creating screenshots.
+•	HeidiSQL is good for working with MySQL databases.
+•	WinDirStat does a good job of showing what’s using your disk space.
+•	WinMerge is a great tool for comparing documents.
