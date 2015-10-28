@@ -1,0 +1,37 @@
+<?php
+
+$html = file_get_contents('http://texreg.sos.state.tx.us/public/readtac$ext.ViewTAC?tac_view=3&ti=22&pt=23');
+$rules = new DOMDocument();
+libxml_use_internal_errors(TRUE); //disable libxml errors
+
+if(!empty($html)){ //if any html is actually returned
+
+    $rules->loadHTML($html);
+    libxml_clear_errors(); //remove errors for yucky html
+
+    $xpath = new DOMXPath($rules);
+
+    //get all the h2's with an id
+    $nodes = $xpath->query('/html/body/center[2]/table[3]//a/@href');
+
+    $count = 0;
+    if ($nodes->length > 0) {
+        foreach ($nodes as $node) {
+            if ($count % 2 == 0)
+            {
+                $html = file_get_contents('http://texreg.sos.state.tx.us/public/' . $node->nodeValue);
+                $dom = new DOMDocument();
+                $dom->loadHTML($html);
+                libxml_clear_errors(); //remove errors for yucky html
+                $xpath2 = new DOMXPath($dom);
+                $nodes2 = $xpath2->query('/html/body/center[2]/table[3]//a/@href');
+                foreach ($nodes2 as $node2) {
+                    echo $node2->nodeValue . "\n";
+                }
+            }
+            $count++;
+        }
+    }
+    die;
+
+}
