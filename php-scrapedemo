@@ -1,105 +1,243 @@
 <!doctype html>
-<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Document</title>
+    <meta charset="utf-8" />
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css" integrity="sha384-aUGj/X2zp5rLCbBxumKTCw2Z50WgIr1vs/PFN4praOTvYXWlVyh2UtNUU0KAUhAX" crossorigin="anonymous">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" integrity="sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ==" crossorigin="anonymous"></script>
 </head>
 <body>
+<div style="width: 800px; margin: 0 auto;">
 <?php
 
-require '/kint/Kint.class.php';
+error_reporting(0);
 
-//$html = file_get_contents('http://texreg.sos.state.tx.us/public/readtac$ext.TacPage?sl=R&app=9&p_dir=&p_rloc=&p_tloc=&p_ploc=&pg=1&p_tac=&ti=22&pt=8&ch=153&rl=1');
-//$html = file_get_contents('http://texreg.sos.state.tx.us/public/readtac$ext.TacPage?sl=T&app=9&p_dir=N&p_rloc=173354&p_tloc=&p_ploc=1&pg=2&p_tac=&ti=22&pt=8&ch=153&rl=1');
-//$dom = new DOMDocument();
-//libxml_use_internal_errors(TRUE);
-//$dom->loadHTML($html);
-//$xpath = new DOMXPath($dom);
-//$nodes = $xpath->query('/html/body/table[2]/tr[2]/td/ss');
-//foreach ($nodes as $node) {
-//    echo $node->textContent . "<br />";
-//}
-
-//$html = file_get_contents('http://texreg.sos.state.tx.us/public/readtac$ext.TacPage?sl=T&app=9&p_dir=N&p_rloc=168949&p_tloc=&p_ploc=1&pg=3&p_tac=&ti=22&pt=8&ch=153&rl=1');
-//$html = file_get_contents('http://texreg.sos.state.tx.us/public/readtac$ext.TacPage?sl=T&app=9&p_dir=N&p_rloc=170540&p_tloc=&p_ploc=1&pg=4&p_tac=&ti=22&pt=8&ch=153&rl=1');
-$html = file_get_contents('http://texreg.sos.state.tx.us/public/readtac$ext.TacPage?sl=T&app=9&p_dir=N&p_rloc=168951&p_tloc=&p_ploc=1&pg=5&p_tac=&ti=22&pt=8&ch=153&rl=1');
-$html = str_replace("\n", "", $html);
-$dom = new DOMDocument();
-libxml_use_internal_errors(TRUE);
-$dom->loadHTML($html);
-$xpath = new DOMXPath($dom);
-$nodes = $xpath->query('/html/body/table[2]/tr[2]/td/ss');
-foreach ($nodes as $node) {
-//    echo $node->firstChild->childNodes->length . "<br />";
-//    echo $node->textContent . "<br />";
-    if ($node->firstChild->childNodes->length > 1) {
-        foreach ($node->firstChild->childNodes as $node2) {
-            if (($node2->childNodes != null) && ($node2->childNodes->length > 1)) {
-                foreach ($node2->childNodes as $node3) {
-                    if (($node3->childNodes != null) && ($node3->childNodes->length > 1)) {
-                        foreach ($node3->childNodes as $node4) {
-                            echo "<p style='margin-left: 30px;'>" . trim($node4->nodeValue, chr(0xC2).chr(0xA0)) . "</p>";
-                        }
-                    }
-                    else {
-                        if ($node3->nodeName != '#text')
-                        {
-                            echo "<p style='margin-left: 20px;'>" . trim($node3->nodeValue, chr(0xC2).chr(0xA0)) . "</p>";
-                        }
-                    }
-                }
+function crawl($url) {
+    $html = file_get_contents($url);
+    $dom = new DOMDocument();
+    libxml_use_internal_errors(TRUE);
+    $dom->loadHTML($html);
+    libxml_clear_errors();
+    $xpath = new DOMXPath($dom);
+    $hrefs = $xpath->query('/html/body/center[2]/table[3]//a/@href');
+    if (strpos($url, 'tac_view=4') !== false) {
+        $chapter = $xpath->query('//table[2]//tr[3]//td');
+        echo "<h3>" . $chapter->item(0)->nodeValue . " " . $chapter->item(1)->nodeValue . "</h3>";
+    }
+    $hrefBuffer = array();
+    foreach ($hrefs as $href) {
+        $url = $href->nodeValue;
+        if (!in_array($url, $hrefBuffer)) {
+            $hrefBuffer[] = $url;
+            $haystack = $url;
+            $needle = 'ViewTAC';
+            if (strpos($haystack, $needle) !== false) {
+//                echo "<p>Opening <a href='http://texreg.sos.state.tx.us/public/" . $url . "' target='_blank'>http://texreg.sos.state.tx.us/public/" . $url . "</a></p>";
+                $url = 'http://texreg.sos.state.tx.us/public/' . $url;
+                crawl($url);
             }
             else {
-                echo "<p style='margin-left: 10px;'>" . $node2->nodeValue . "</p>";
+//                echo "<p>Opening <a href='http://texreg.sos.state.tx.us/public/" . $url . "' target='_blank'>http://texreg.sos.state.tx.us/public/" . $url . "</a></p>";
+                $html = file_get_contents('http://texreg.sos.state.tx.us/public/' . $url);
+                $dom = new DOMDocument();
+                libxml_use_internal_errors(TRUE);
+                $dom->loadHTML($html);
+                libxml_clear_errors();
+                $xpath = new DOMXPath($dom);
+                $rules = $xpath->query('/html/body/table[1]/tr[4]/td');
+                echo "<h4>" . $rules->item(0)->nodeValue . " " . $rules->item(1)->nodeValue . "</h4>";
+                $nodes = $xpath->query('/html/body/table[2]/tr[2]/td/ss');
+                process($nodes);
             }
         }
     }
-    else {
-        echo "<p>" . $node->firstChild->firstChild->nodeValue . "</p>";
-    }
+}
+
+function process($nodes) {
+    foreach ($nodes as $node) {
+//    echo $node->firstChild->childNodes->length . "<br />";
+//    echo $node->textContent . "<br />";
+        if ($node->firstChild->childNodes->length > 1) {
+            foreach ($node->firstChild->childNodes as $key=>$node2) {
+//                echo "<h1>node2" . $key . "</h1>";
+                if (($node2->childNodes != null) && ($node2->childNodes->length > 1)) {
+                    foreach ($node2->childNodes as $key=>$node3) {
+//                        echo "<h1>node3" . $key . "</h1>";
+                        if (($node3->childNodes != null) && ($node3->childNodes->length > 1)) {
+                            foreach ($node3->childNodes as $key=>$node4) {
+//                                echo "<h1>node4" . $key . "</h1>";
+                                if (($node4->childNodes != null) && ($node4->childNodes->length > 1)) {
+                                    // Node 5
+                                    foreach ($node4->lastChild->childNodes as $node5key=>$node5) {
+                                        $node5length = $node4->lastChild->childNodes->length;
+                                        if ($node5key == 0) {
+                                            echo "<li style='margin-left: 40px;'>node5key: $node5key -- node5length $node5length" . trim($node5->nodeValue, chr(0xC2).chr(0xA0));
+                                        }
+                                        else {
+                                            if ($node5key == 1) {
+                                                echo "<ol>";
+                                            }
+                                            // Node 6
+                                            foreach ($node5->lastChild->childNodes as $node6key=>$node6) {
+                                                $node6length = $node5->lastChild->childNodes->length;
+                                                if ($node6key == 0) {
+                                                    echo "<li style='margin-left: 60px;'>node5key: $node5key node6key: $node6key" . trim($node6->nodeValue, chr(0xC2).chr(0xA0));
+                                                }
+                                                else {
+                                                    if ($node6key == 1) {
+                                                        echo "<ol>";
+                                                    }
+                                                    echo "<li style='margin-left: 80px;'>" . trim($node6->nodeValue, chr(0xC2).chr(0xA0)) . "</li>";
+                                                    if ($node6key == $node6length - 1) {
+                                                        echo "</ol>";
+                                                    }
+                                                }
+                                                if ($node6key == $node6length - 1) {
+                                                    echo "</li>";
+                                                }
+                                            }
+                                            if ($node5key == $node5length - 1) {
+                                                echo "</ol>";
+                                            }
+                                        }
+                                        if ($node5key == $node5length - 1) {
+                                            echo "</li>";
+                                        }
+//                                        else {
+//                                            if ($node5key == 1) {
+//                                                echo "<ol>";
+//                                            }
+//                                            echo "<li style='margin-left: 80px;'>" . trim($node6->nodeValue, chr(0xC2).chr(0xA0)) . "</li>";
+//                                            if ($node6key == $node6length - 1) {
+//                                                echo "</ol>";
+//                                            }
+//                                        }
+//                                        if ($node5key == $node5length - 1) {
+//                                            echo "</li>";
+//                                        }
+//                                        if ($node5key == 1)
+//                                        {
+//                                            echo "<ol>";
+//                                        }
+//                                        if ($node5key == $node5length - 1) {
+//                                            echo "</ol></li><!-- 128 -->";
+//                                        }
+
+                                        // Node 6
+//                                        if (($node5->childNodes != null) && ($node5->childNodes->length > 1)) {
+//                                            foreach ($node5->lastChild->childNodes as $node6key=>$node6) {
+//                                                $node6length = $node5->lastChild->childNodes->length;
+//                                                echo "<h1>node6 - key: " . $node6key . " node6length: " . $node6length . "</h1>";
+//                                                echo $length;
+//                                                echo "<h1>node6" . $key . "</h1>";
+//                                                if ($node6 == $node5->lastChild->firstChild) {
+//                                                if ($node6key == 0) {
+//                                                    echo "<li style='margin-left: 60px;'>node5key: $node5key node6key: $node6key" . trim($node6->nodeValue, chr(0xC2).chr(0xA0));
+//                                                    if ($length > 1) {
+//                                                        echo "<ol><!-- 89 -->";
+//                                                    }
+//                                                }
+//                                                else {
+//                                                    if ($node6key == 1) {
+//                                                        echo "<ol>";
+//                                                    }
+//                                                    echo "<li style='margin-left: 80px;'>" . trim($node6->nodeValue, chr(0xC2).chr(0xA0)) . "</li>";
+//                                                    if ($node6key == $node6length - 1) {
+//                                                        echo "</ol>";
+//                                                    }
+//                                                }
+//                                                if ($node6key == $node6length - 1) {
+//                                                    echo "</li>";
+//                                                }
+//                                                if (($length > 1) && ($node5key == $length - 1)) {
+//                                                    echo "</ol></li>";
+//                                                }
+//                                                else {
+//                                                    echo "</li>";
+//                                                }
+//                                            }
+//                                        }
+//                                        else {
+//                                            echo "<li style='margin-left: 40px;'>node5key: $node5key -- node5length $node5length" . trim($node5->nodeValue, chr(0xC2).chr(0xA0));
+//                                            if ($node5length > 1) {
+//                                                echo "start sub-list<ol>";
+//                                            }
+//                                            if ($node5 == $node4->lastChild->firstChild) {
+//                                                echo "<li style='margin-left: 40px;'>key: $key -- " . trim($node4->lastChild->firstChild->nodeValue, chr(0xC2).chr(0xA0));
+//                                                if ($length > 1) {
+//                                                    echo "<ol><!-- node5 -->";
+//                                                }
+//                                                else {
+//                                                    echo "</li>";
+//                                                }
+//                                            }
+//                                            else {
+//                                                echo "<li style='margin-left: 60px;'>key: $key -- " . trim($node5->nodeValue, chr(0xC2).chr(0xA0)) . "</li>";
+//                                            }
+//                                            if ($key == $length - 1) {
+//                                                echo "</ol></li><!-- nodex -->";
+//                                            }
+//                                        }
+
+//                                        if (($key == $length - 1)) {
+//                                            echo "</ol>";
+//                                        }
+                                    }
+//                                    echo "</ol>";
+                                }
+                                else {
+                                    if ($node4 == $node3->firstChild) {
+                                        echo "<p style='margin-left: 20px;'>" . trim($node4->nodeValue, chr(0xC2).chr(0xA0)) . "</p>";
+                                    }
+                                    else {
+                                        echo "<p style='margin-left: 40px;'>" . trim($node4->nodeValue, chr(0xC2).chr(0xA0)) . "</p>";
+                                    }
+                                }
+                            }
+                        }
+                        else {
+                            if ($node3->nodeName != '#text')
+                            {
+                                echo "<p style='margin-left: 20px;'>" . trim($node3->nodeValue, chr(0xC2).chr(0xA0)) . "</p>";
+                            }
+                        }
+                    }
+                }
+                else {
+                    echo "<p style='margin-left: 0px;'>" . $node2->nodeValue . "</p>";
+                }
+            }
+        }
+        else if ($node->childNodes->length > 1) {
+            foreach ($node->childNodes as $node2) {
+                if ($node2->nodeName == "p") {
+                    echo "<p style='margin-left: 0px;'>" . trim($node2->nodeValue, chr(0xC2).chr(0xA0)) . "</p>";
+                }
+                else if ($node2->nodeName == "#text") {
+                    continue;
+                }
+                else {
+                    echo "<p style='margin-left: 10px;'>" . trim($node2->nodeValue, chr(0xC2).chr(0xA0)) . "</p>";
+                }
+            }
+        }
+        else {
+            echo "<p>" . $node->firstChild->firstChild->nodeValue . "</p>";
+        }
 //    foreach ($node->firstChild->childNodes as $node2) {
 //        echo $node2->childNodes->length . "<br />";
 //        echo $node2->nodeValue . "<br />";
 //    }
+    }
 }
 
-die;
-
+$url = 'http://texreg.sos.state.tx.us/public/readtac$ext.ViewTAC?tac_view=3&ti=22&pt=8';
+crawl($url);
 ?>
+</div>
 </body>
 </html>
-
-
-//$html = file_get_contents('http://texreg.sos.state.tx.us/public/readtac$ext.ViewTAC?tac_view=3&ti=22&pt=8');
-//$rules = new DOMDocument();
-//libxml_use_internal_errors(TRUE); //disable libxml errors
-//
-//if(!empty($html)){ //if any html is actually returned
-//
-//    $rules->loadHTML($html);
-//    libxml_clear_errors(); //remove errors for yucky html
-//
-//    $xpath = new DOMXPath($rules);
-//
-//    //get all the h2's with an id
-//    $nodes = $xpath->query('/html/body/center[2]/table[3]//a/@href');
-//
-//    $count = 0;
-//    if ($nodes->length > 0) {
-//        foreach ($nodes as $node) {
-//            if ($count % 2 == 0)
-//            {
-//                $html = file_get_contents('http://texreg.sos.state.tx.us/public/' . $node->nodeValue);
-//                $dom = new DOMDocument();
-//                $dom->loadHTML($html);
-//                libxml_clear_errors(); //remove errors for yucky html
-//                $xpath2 = new DOMXPath($dom);
-//                $nodes2 = $xpath2->query('/html/body/center[2]/table[3]//a/@href');
-//                foreach ($nodes2 as $node2) {
-//                    echo $node2->nodeValue . "\n";
-//                }
-//            }
-//            $count++;
-//        }
-//    }
-//}
