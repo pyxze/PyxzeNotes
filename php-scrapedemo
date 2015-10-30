@@ -9,9 +9,12 @@
 
     <!-- Latest compiled and minified JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" integrity="sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ==" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="https://www.talcb.texas.gov/sites/default/files/css/css_0aPZftdWHQnNedm78jeLEM9Y7mnIoLtUshT0zhtb4UQ.css" crossorigin="anonymous">
 </head>
 <body>
-<div style="width: 800px; margin: 0 auto;">
+
+<div style="width: 800px; margin: 0 auto;" id="page-content">
 <?php
 
 error_reporting(0);
@@ -58,40 +61,85 @@ function crawl($url) {
 }
 
 function process($nodes) {
-    foreach ($nodes as $node) {
-//    echo $node->firstChild->childNodes->length . "<br />";
-//    echo $node->textContent . "<br />";
-        if ($node->firstChild->childNodes->length > 1) {
-            foreach ($node->firstChild->childNodes as $key=>$node2) {
-//                echo "<h1>node2" . $key . "</h1>";
-                if (($node2->childNodes != null) && ($node2->childNodes->length > 1)) {
-                    foreach ($node2->childNodes as $key=>$node3) {
-//                        echo "<h1>node3" . $key . "</h1>";
-                        if (($node3->childNodes != null) && ($node3->childNodes->length > 1)) {
-                            foreach ($node3->childNodes as $key=>$node4) {
-//                                echo "<h1>node4" . $key . "</h1>";
-                                if (($node4->childNodes != null) && ($node4->childNodes->length > 1)) {
+    // Node 1
+    foreach ($nodes as $node1key=>$node) {
+        $node1length = $nodes->length;
+//        echo "<h1>node1key " . $node1key . " node1length " . $node1length . "</h1>";
+        if (($node1key == 0) && ($node1length == 1)) {
+            if ($node1length == 1) {
+                foreach ($node->childNodes as $node2) {
+                    if ($node2->nodeName == "p") {
+                        echo "<p style='margin-left: 0px;'>" . trim($node2->nodeValue, chr(0xC2).chr(0xA0)) . "</p>";
+                    }
+                    else if ($node2->nodeName == "#text") {
+                        continue;
+                    }
+                    else {
+                        echo "<p style='margin-left: 10px;'>" . trim($node2->nodeValue, chr(0xC2).chr(0xA0)) . "</p>";
+                    }
+                }
+            }
+        }
+        else {
+            if ($node1key == 0) {
+                echo "<ol class='lower-alpha'>";
+            }
+            // Node 2
+            foreach ($node->firstChild->childNodes as $node2key=>$node2) {
+                $node2length = $node->firstChild->childNodes->length;
+                if ($node2key == 0) {
+                    echo "<li>" . $node2->nodeValue;
+                }
+                else {
+                    if ($node2key == 1) {
+                        echo "<ol class='numeric'>";
+                    }
+                    // Node 3
+                    foreach ($node2->childNodes as $node3key=>$node3) {
+                        $node3length = $node2->childNodes->length;
+                        if ($node3key == 0) {
+                            continue;
+                        }
+                        else if ($node3key == 1) {
+//                            echo "<li style='margin-left: 0px;'>node3key: $node3key -- node3length $node3length" . trim($node3->lastChild->nodeValue, chr(0xC2) . chr(0xA0));
+
+//                        }
+//                        else {
+//                            echo "<li style='margin-left: 0px;'>node3key: $node3key -- node3length $node3length" . trim($node3->index(1)->nodeValue, chr(0xC2) . chr(0xA0));
+//                        }
+//                        else {
+//                            if ($node3key == 2) {
+//                                echo "<ol>";
+//                            }
+                            // Node 4
+                            foreach ($node3->childNodes as $node4key=>$node4) {
+                                $node4length = $node3->childNodes->length;
+                                if ($node4key == 0) {
+                                    echo "<li>" . trim($node4->nodeValue, chr(0xC2) . chr(0xA0));
+                                }
+                                else {
+                                    if ($node4key == 1) {
+                                        echo "<ol class='upper-alpha'>";
+                                    }
                                     // Node 5
                                     foreach ($node4->lastChild->childNodes as $node5key=>$node5) {
                                         $node5length = $node4->lastChild->childNodes->length;
                                         if ($node5key == 0) {
-                                            echo "<li style='margin-left: 40px;'>node5key: $node5key -- node5length $node5length" . trim($node5->nodeValue, chr(0xC2).chr(0xA0));
-                                        }
-                                        else {
+                                            echo "<li>" . trim($node5->nodeValue, chr(0xC2) . chr(0xA0));
+                                        } else {
                                             if ($node5key == 1) {
-                                                echo "<ol>";
+                                                echo "<ol class='lower-roman'>";
                                             }
                                             // Node 6
-                                            foreach ($node5->lastChild->childNodes as $node6key=>$node6) {
+                                            foreach ($node5->lastChild->childNodes as $node6key => $node6) {
                                                 $node6length = $node5->lastChild->childNodes->length;
                                                 if ($node6key == 0) {
-                                                    echo "<li style='margin-left: 60px;'>node5key: $node5key node6key: $node6key" . trim($node6->nodeValue, chr(0xC2).chr(0xA0));
-                                                }
-                                                else {
+                                                    echo "<li>" . trim($node6->nodeValue, chr(0xC2) . chr(0xA0));
+                                                } else {
                                                     if ($node6key == 1) {
-                                                        echo "<ol>";
+                                                        echo "<ol class='upper-roman'>";
                                                     }
-                                                    echo "<li style='margin-left: 80px;'>" . trim($node6->nodeValue, chr(0xC2).chr(0xA0)) . "</li>";
+                                                    echo "<li>" . trim($node6->nodeValue, chr(0xC2) . chr(0xA0)) . "</li>";
                                                     if ($node6key == $node6length - 1) {
                                                         echo "</ol>";
                                                     }
@@ -107,131 +155,35 @@ function process($nodes) {
                                         if ($node5key == $node5length - 1) {
                                             echo "</li>";
                                         }
-//                                        else {
-//                                            if ($node5key == 1) {
-//                                                echo "<ol>";
-//                                            }
-//                                            echo "<li style='margin-left: 80px;'>" . trim($node6->nodeValue, chr(0xC2).chr(0xA0)) . "</li>";
-//                                            if ($node6key == $node6length - 1) {
-//                                                echo "</ol>";
-//                                            }
-//                                        }
-//                                        if ($node5key == $node5length - 1) {
-//                                            echo "</li>";
-//                                        }
-//                                        if ($node5key == 1)
-//                                        {
-//                                            echo "<ol>";
-//                                        }
-//                                        if ($node5key == $node5length - 1) {
-//                                            echo "</ol></li><!-- 128 -->";
-//                                        }
-
-                                        // Node 6
-//                                        if (($node5->childNodes != null) && ($node5->childNodes->length > 1)) {
-//                                            foreach ($node5->lastChild->childNodes as $node6key=>$node6) {
-//                                                $node6length = $node5->lastChild->childNodes->length;
-//                                                echo "<h1>node6 - key: " . $node6key . " node6length: " . $node6length . "</h1>";
-//                                                echo $length;
-//                                                echo "<h1>node6" . $key . "</h1>";
-//                                                if ($node6 == $node5->lastChild->firstChild) {
-//                                                if ($node6key == 0) {
-//                                                    echo "<li style='margin-left: 60px;'>node5key: $node5key node6key: $node6key" . trim($node6->nodeValue, chr(0xC2).chr(0xA0));
-//                                                    if ($length > 1) {
-//                                                        echo "<ol><!-- 89 -->";
-//                                                    }
-//                                                }
-//                                                else {
-//                                                    if ($node6key == 1) {
-//                                                        echo "<ol>";
-//                                                    }
-//                                                    echo "<li style='margin-left: 80px;'>" . trim($node6->nodeValue, chr(0xC2).chr(0xA0)) . "</li>";
-//                                                    if ($node6key == $node6length - 1) {
-//                                                        echo "</ol>";
-//                                                    }
-//                                                }
-//                                                if ($node6key == $node6length - 1) {
-//                                                    echo "</li>";
-//                                                }
-//                                                if (($length > 1) && ($node5key == $length - 1)) {
-//                                                    echo "</ol></li>";
-//                                                }
-//                                                else {
-//                                                    echo "</li>";
-//                                                }
-//                                            }
-//                                        }
-//                                        else {
-//                                            echo "<li style='margin-left: 40px;'>node5key: $node5key -- node5length $node5length" . trim($node5->nodeValue, chr(0xC2).chr(0xA0));
-//                                            if ($node5length > 1) {
-//                                                echo "start sub-list<ol>";
-//                                            }
-//                                            if ($node5 == $node4->lastChild->firstChild) {
-//                                                echo "<li style='margin-left: 40px;'>key: $key -- " . trim($node4->lastChild->firstChild->nodeValue, chr(0xC2).chr(0xA0));
-//                                                if ($length > 1) {
-//                                                    echo "<ol><!-- node5 -->";
-//                                                }
-//                                                else {
-//                                                    echo "</li>";
-//                                                }
-//                                            }
-//                                            else {
-//                                                echo "<li style='margin-left: 60px;'>key: $key -- " . trim($node5->nodeValue, chr(0xC2).chr(0xA0)) . "</li>";
-//                                            }
-//                                            if ($key == $length - 1) {
-//                                                echo "</ol></li><!-- nodex -->";
-//                                            }
-//                                        }
-
-//                                        if (($key == $length - 1)) {
-//                                            echo "</ol>";
-//                                        }
                                     }
-//                                    echo "</ol>";
-                                }
-                                else {
-                                    if ($node4 == $node3->firstChild) {
-                                        echo "<p style='margin-left: 20px;'>" . trim($node4->nodeValue, chr(0xC2).chr(0xA0)) . "</p>";
-                                    }
-                                    else {
-                                        echo "<p style='margin-left: 40px;'>" . trim($node4->nodeValue, chr(0xC2).chr(0xA0)) . "</p>";
+                                    if ($node4key == $node4length - 1) {
+                                        echo "</ol>";
                                     }
                                 }
+                                if ($node4key == $node4length - 1) {
+                                    echo "</li>";
+                                }
                             }
+//                            if ($node3key == $node3length - 1) {
+//                                echo "</ol>";
+//                            }
                         }
-                        else {
-                            if ($node3->nodeName != '#text')
-                            {
-                                echo "<p style='margin-left: 20px;'>" . trim($node3->nodeValue, chr(0xC2).chr(0xA0)) . "</p>";
-                            }
-                        }
+//                        if ($node3key == $node3length - 1) {
+//                            echo "</li>";
+//                        }
+                    }
+                    if ($node2key == $node2length - 1) {
+                        echo "</ol>";
                     }
                 }
-                else {
-                    echo "<p style='margin-left: 0px;'>" . $node2->nodeValue . "</p>";
+                if ($node2key == $node2length - 1) {
+                    echo "</li>";
                 }
             }
-        }
-        else if ($node->childNodes->length > 1) {
-            foreach ($node->childNodes as $node2) {
-                if ($node2->nodeName == "p") {
-                    echo "<p style='margin-left: 0px;'>" . trim($node2->nodeValue, chr(0xC2).chr(0xA0)) . "</p>";
-                }
-                else if ($node2->nodeName == "#text") {
-                    continue;
-                }
-                else {
-                    echo "<p style='margin-left: 10px;'>" . trim($node2->nodeValue, chr(0xC2).chr(0xA0)) . "</p>";
-                }
+            if ($node1key == $node1length - 1) {
+                echo "</ol>";
             }
         }
-        else {
-            echo "<p>" . $node->firstChild->firstChild->nodeValue . "</p>";
-        }
-//    foreach ($node->firstChild->childNodes as $node2) {
-//        echo $node2->childNodes->length . "<br />";
-//        echo $node2->nodeValue . "<br />";
-//    }
     }
 }
 
