@@ -1,5 +1,7 @@
 <?php
 
+// http://stackoverflow.com/questions/10163675/merge-xml-files-in-php
+
 function returnNodes($url) {
     $html = file_get_contents($url);
     $nodes = new DOMDocument();
