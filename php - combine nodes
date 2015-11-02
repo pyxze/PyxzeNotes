@@ -1,0 +1,52 @@
+<?php
+
+function returnNodes($url) {
+    $html = file_get_contents($url);
+    $nodes = new DOMDocument();
+    $nodes->formatOutput = true;
+    libxml_use_internal_errors(TRUE);
+    $nodes->loadHTML($html);
+    libxml_clear_errors();
+    return $nodes;
+}
+
+function findContd($nodes) {
+    if ($nodes->hasChildNodes()) {
+        foreach ($nodes->childNodes as $node) {
+            return findContd($node);
+        }
+    }
+    else {
+//        echo $dom->nodeValue . "\n";
+        if (trim($nodes->nodeValue) === "Cont'd...") {
+            echo "found it\n";
+
+            return $nodes;
+
+        }
+//        if (strpos($nodes->nodeValue, "Cont") != null) {
+//            echo "found it \n";
+//            echo $nodes->nodeValue . "\n";
+//        }
+    }
+}
+
+$url = 'http://texreg.sos.state.tx.us/public/readtac$ext.TacPage?sl=T&app=9&p_dir=N&p_rloc=168962&p_tloc=&p_ploc=1&pg=16&p_tac=&ti=22&pt=8&ch=153&rl=1';
+$nodes = returnNodes($url);
+//$contdNode = findContd($nodes);
+
+$xpath = new DOMXPath($nodes);
+$contdNode = $xpath->query('//text()[contains(.,"Cont\'d...")]')->item(0);
+$nodeFragments = returnNodes('http://texreg.sos.state.tx.us/public/readtac$ext.TacPage?sl=T&app=9&p_dir=F&p_rloc=172575&p_tloc=14851&p_ploc=1&pg=2&p_tac=&ti=22&pt=8&ch=153&rl=24');
+$xpath2 = new DOMXPath($nodeFragments);
+$fragmentNodes = $xpath2->query('/html/body/table[2]/tr[2]/td')->item(0);
+
+$import = $nodes->importNode($fragmentNodes, true);
+$contdNode->appendChild($import);
+
+//foreach ($fragmentNodes as $fragmentNode) {
+//    $contdNode->appendChild($fragmentNode);
+//    $nodes->appendChild($fragmentNode);
+//}
+
+echo $nodes->saveHTML();
