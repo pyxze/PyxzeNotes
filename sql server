@@ -1,3 +1,11 @@
 http://beyondrelational.com/modules/12/tutorials/26/tutorials/4606/getting-started-with-ssrs-part-8-show-ssrs-report-in-aspnet-web-page.aspx
 
 http://askubuntu.com/questions/167491/connecting-ms-sql-using-freetds-and-unixodbc-isql-no-default-driver-specified
+
+https://dunglas.fr/2014/01/connection-to-a-ms-sql-server-from-symfony-doctrine-on-mac-or-linux/
+
+"As SQL Server is a bad default DBMS for a Symfony app, especially on Unix servers, you should be interested by using multiple database connection with Symfony and Doctrine."
+
+http://www.lucas.courot.com/connect-doctrine2-to-a-ms-sql-server-within-a-symfony2-project.html
+
+"As you can see it's such a pain to support MS SQL Server in Doctrine and you should avoid to use it as much as possible in your PHP projects."
