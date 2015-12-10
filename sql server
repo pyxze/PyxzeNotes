@@ -9,3 +9,57 @@ https://dunglas.fr/2014/01/connection-to-a-ms-sql-server-from-symfony-doctrine-o
 http://www.lucas.courot.com/connect-doctrine2-to-a-ms-sql-server-within-a-symfony2-project.html
 
 "As you can see it's such a pain to support MS SQL Server in Doctrine and you should avoid to use it as much as possible in your PHP projects."
+
+Here is how paging was handled before SQL Server 2012 using a common table expression (CTE) and ROW_NUMBER():
+
+WITH Paging_CTE AS
+(
+SELECT
+TransactionID
+, ProductID
+, TransactionDate
+, Quantity
+, ActualCost
+, ROW_NUMBER() OVER (ORDER BY TransactionDate DESC) AS RowNumber
+FROM
+Production.TransactionHistory
+)
+SELECT
+TransactionID
+, ProductID
+, TransactionDate
+, Quantity
+, ActualCost
+FROM
+Paging_CTE
+WHERE RowNumber > 0 AND RowNumber <= 20
+
+SQL Server 2012 introduced OFFSET and FETCH which now allows us to write the paging request as such:
+
+CREATE PROCEDURE dbo.Pagination_Test_1 -- ORDER BY CustomerID
+  @PageNumber INT = 1,
+  @PageSize   INT = 100
+AS
+BEGIN
+  SET NOCOUNT ON;
+
+  SELECT CustomerID, FirstName, LastName,
+      EMail, Active, Created, Updated
+    FROM dbo.Customers_I
+    ORDER BY CustomerID
+    OFFSET @PageSize * (@PageNumber - 1) ROWS
+    FETCH NEXT @PageSize ROWS ONLY OPTION (RECOMPILE);
+END
+GO
+
+Resources:
+
+New T-SQL features in SQL Server 2012 – OFFSET and FETCH
+http://dbadiaries.com/new-t-sql-features-in-sql-server-2012-offset-and-fetch
+
+What’s new in SQL Server 2012
+https://books.google.com/books?id=qdQh8nzBVCAC&lpg=PA2-IA5&dq=OFFSET%20FETCH%20pagination%20sql%20server&pg=PA2-IA4#v=onepage&q&f=false
+
+What is the best way to paginate results in SQL Server
+http://stackoverflow.com/questions/109232/what-is-the-best-way-to-paginate-results-in-sql-server
+
