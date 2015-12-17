@@ -2,6 +2,9 @@ http://beyondrelational.com/modules/12/tutorials/26/tutorials/4606/getting-start
 
 http://askubuntu.com/questions/167491/connecting-ms-sql-using-freetds-and-unixodbc-isql-no-default-driver-specified
 
+LINUX + PHP + PDO -> SQL SERVER
+http://ollieparsley.com/2014/05/29/linux-php-pdo-sql-server/
+
 https://dunglas.fr/2014/01/connection-to-a-ms-sql-server-from-symfony-doctrine-on-mac-or-linux/
 
 "As SQL Server is a bad default DBMS for a Symfony app, especially on Unix servers, you should be interested by using multiple database connection with Symfony and Doctrine."
