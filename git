@@ -2,3 +2,6 @@ git config --global user.name "Jason Romero"
 git config --global user.email jason@pyxze.com
 
 git diff --name-only master
+
+Undo commit: git reset --hard HEAD~1
+Squash commits: git reset --soft HEAD~3 && git commit
