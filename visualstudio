@@ -1,3 +1,6 @@
 Configuring Web http://localhost:64886/ for ASP.NET 4.5 failed. You must manually configure this site for 
 ASP.NET 4.5 in order for the site to run correctly. 
 https://support.microsoft.com/en-us/kb/3002340
+
+Tricks with app.config and ClickOnce deployment (Saurabh Bhatia)
+http://blogs.msdn.com/b/vsto/archive/2010/03/09/tricks-with-app-config-and-clickonce-deployment-saurabh-bhatia.aspx
