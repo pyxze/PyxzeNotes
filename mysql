@@ -1,3 +1,6 @@
+CREATE USER 'jeffrey'@'localhost' IDENTIFIED BY 'mypass';
+GRANT ALL ON db1.* TO 'jeffrey'@'localhost';
+
 CREATE TABLE IF NOT EXISTS `customers` (
   `idcustomers` INT NOT NULL,
   `name` VARCHAR(45) NULL,
