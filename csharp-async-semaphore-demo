@@ -1,0 +1,114 @@
+using System;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.Linq;
+using System.Net;
+using System.Net.Http;
+using System.Net.Http.Headers;
+using System.Text;
+using System.Threading;
+using System.Threading.Tasks;
+
+namespace AsyncSemaphoreDemo
+{
+    class Program
+    {
+        public static List<Task> TaskList = new List<Task>();
+        static readonly SemaphoreSlim _semaphore = new SemaphoreSlim(2);
+
+        static void Main(string[] args)
+        {
+            List<string> items = new List<string> { "Austin", "Dallas", "Houston" };
+            foreach (var item in items)
+            {
+                TaskList.Add(Foo(item));
+            }
+
+            Task.WaitAll(TaskList.ToArray());
+            Console.WriteLine("Press Enter to exit...");
+            Console.ReadLine();
+        }
+
+        public static async Task Foo(string item)
+        {
+            await Program._semaphore.WaitAsync();
+
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri("http://api.openweathermap.org");
+                HttpResponseMessage response = await client.GetAsync(string.Format("/data/2.5/weather?q={0}&appid=44db6a862fba0b067b1930da0d769e98", item));
+                Program._semaphore.Release();
+                if (response.IsSuccessStatusCode)
+                {
+                    var obj = await response.Content.ReadAsAsync<RootObject>();
+                    Console.WriteLine(item + ": " + ( ((float) obj.main.temp - 273.15)*1.8 + 32));
+                }
+                else
+                {
+                    Console.WriteLine(response.StatusCode);
+                }
+            }
+
+        }
+
+    }
+
+    public class Coord
+    {
+        public double lon { get; set; }
+        public double lat { get; set; }
+    }
+
+    public class Weather
+    {
+        public int id { get; set; }
+        public string main { get; set; }
+        public string description { get; set; }
+        public string icon { get; set; }
+    }
+
+    public class Main
+    {
+        public double temp { get; set; }
+        public double pressure { get; set; }
+        public int humidity { get; set; }
+        public double temp_min { get; set; }
+        public double temp_max { get; set; }
+        public double sea_level { get; set; }
+        public double grnd_level { get; set; }
+    }
+
+    public class Wind
+    {
+        public double speed { get; set; }
+        public double deg { get; set; }
+    }
+
+    public class Clouds
+    {
+        public int all { get; set; }
+    }
+
+    public class Sys
+    {
+        public double message { get; set; }
+        public string country { get; set; }
+        public int sunrise { get; set; }
+        public int sunset { get; set; }
+    }
+
+    public class RootObject
+    {
+        public Coord coord { get; set; }
+        public List<Weather> weather { get; set; }
+        public string @base { get; set; }
+        public Main main { get; set; }
+        public Wind wind { get; set; }
+        public Clouds clouds { get; set; }
+        public int dt { get; set; }
+        public Sys sys { get; set; }
+        public int id { get; set; }
+        public string name { get; set; }
+        public int cod { get; set; }
+    }
+}
