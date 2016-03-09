@@ -1,0 +1,9 @@
+declare @dir varchar(30)
+set @dir = 'c:\downloads'
+
+DECLARE @cmd varchar (255)
+EXEC xp_sprintf @cmd OUTPUT, 
+    'dir %s', @dir
+
+EXEC xp_cmdshell @cmd;
+GO
