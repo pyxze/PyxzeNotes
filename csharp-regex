@@ -1,0 +1,6 @@
+Regex rgxDate = new Regex(@"^[0-9]");
+try
+{
+    if (rgx.IsMatch(searchText))
+    {
+        
