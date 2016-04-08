@@ -4,3 +4,6 @@ try
     if (rgx.IsMatch(searchText))
     {
         
+
+Regex pattern = new Regex("[;,\t\r ]|[\n]{2}");
+pattern.Replace(myString, "\n");
