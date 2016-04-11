@@ -1,0 +1,9 @@
+foreach (var column in columns)
+{
+    int index = dr.GetOrdinal(column);
+    var fieldType = dr.GetFieldType(index);
+    if (!dr.IsDBNull(index))
+        { ((IDictionary<string, object>)row)[column] = dr.GetValue(index).ToString(); }
+    else
+        { ((IDictionary<string, object>)row)[column] = null; }
+}
