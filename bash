@@ -1,3 +1,5 @@
+find . -name '*.py' -print0 | xargs -0 grep 'something' > output.txt
+
 alias ..='cd ..'
 alias ...='cd ../..'
 alias ~='cd ~'
