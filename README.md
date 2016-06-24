@@ -10,4 +10,19 @@ string s = Regex.Replace(s, @"\bwest\b", "something");
 
 ## React
 
+* [My React Demo](https://jsfiddle.net/jasoncromero/m8vbtub1/)
 * [Thinking in React](https://facebook.github.io/react/docs/thinking-in-react.html)
+
+## Javascript
+
+* [ES6 String Interpolation!](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals)
+```
+`string text`
+
+`string text line 1
+ string text line 2`
+
+`string text ${expression} string text`
+
+tag `string text ${expression} string text`
+```
