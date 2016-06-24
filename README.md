@@ -8,3 +8,6 @@ string s = Regex.Replace(s, @"\bwest\b", "something");
 ```
 * [CSV Helper](https://joshclose.github.io/CsvHelper/)
 
+## React
+
+* [Thinking in React](https://facebook.github.io/react/docs/thinking-in-react.html)
