@@ -26,3 +26,7 @@ string s = Regex.Replace(s, @"\bwest\b", "something");
 
 tag `string text ${expression} string text`
 ```
+
+## Temporary
+
+* [Web Extension Pack](https://visualstudiogallery.msdn.microsoft.com/f3b504c6-0095-42f1-a989-51d5fc2a8459)
