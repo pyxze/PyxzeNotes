@@ -1,4 +1,4 @@
-find . -name '*.py' -print0 | xargs -0 grep 'something' > output.txt
+find . -name '*.py' -print0 2>&1 | xargs -0 grep 'something' > output.txt
 
 alias ..='cd ..'
 alias ...='cd ../..'
