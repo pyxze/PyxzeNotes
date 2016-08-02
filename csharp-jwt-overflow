@@ -1,0 +1,53 @@
+            //var secretKey = "test";
+            //var tokenHandler = new JwtSecurityTokenHandler();
+            //var symmetricKey = Encoding.UTF8.GetBytes("test");
+            //var now = DateTime.UtcNow;
+
+            //var tokenDescriptor = new SecurityTokenDescriptor
+            //{
+            //    Subject = new ClaimsIdentity(
+            //        new[]{
+            //            new Claim(JwtClaimKeys.Audience, SessionManager.Current.AppName),
+            //            new Claim(JwtClaimKeys.Subject, userLoginRequest.UserName),
+            //            new Claim(JwtClaimKeys.Roles, GetRoles(userLoginRequest))
+            //        }),
+            //    TokenIssuerName = "My Company",
+            //    Lifetime = new Lifetime(now, now.AddMinutes(tokenLifetimeInMinutes)),
+            //    SigningCredentials = new SigningCredentials(
+            //        new InMemorySymmetricSecurityKey(symmetricKey),
+            //        "http://www.w3.org/2001/04/xmldsig-more#hmac-sha256",
+            //        "http://www.w3.org/2001/04/xmlenc#sha256")
+            //};
+
+            //var token = tokenHandler.CreateToken(tokenDescriptor);
+
+
+            //var token = new JwtSecurityToken("eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJBQ0NPVU5UX1RZUEUiOiJhZG1pbiIsIkFDQ09VTlRfTkFNRSI6Impyb21lcm8iLCJGSVJTVF9OQU1FIjoiSmFzb24iLCJMQVNUX05BTUUiOiJSb21lcm8iLCJGVUxMX05BTUUiOiJKYXNvbiBSb21lcm8iLCJFTUFJTCI6Ikphc29uLlJvbWVyb0B0cmVjLnRleGFzLmdvdiIsIkRFU0NSSVBUSU9OIjoiSVRTIC0gUHJvZ3JhbW1lciIsIkxBU1RfTE9HT04iOiIyMDE2LTA4LTAxIDE3OjA1OjI3IiwiQUNDT1VOVF9DUkVBVEVEIjoiMjAxNS0xMC0xMiAxNTo0NDoxMyIsIkRFUEFSVE1FTlQiOiJJVFMifQ.7gv_ABlp2ec3kl3UzQ00vCCN9OlLQzLoHclILfCfVco");            
+            //Console.WriteLine(token.ToString());
+            try
+            {
+                // Use JWTSecurityTokenHandler to validate the JWT token
+                System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler tokenHandler = new System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler();
+                
+
+                var plainTextSecurityKey = "This is my shared, not so secret, secret!";
+                var signingKey = new InMemorySymmetricSecurityKey(Encoding.UTF8.GetBytes(plainTextSecurityKey));
+                var validationParameters = new TokenValidationParameters()
+                {
+                    IssuerSigningToken = new BinarySecretSecurityToken(Encoding.UTF8.GetBytes("test")),
+                    //IssuerSigningToken = signingKey,
+                    ValidAudience = "audience",
+                    ValidIssuer = "issuer",
+                    //ValidateLifetime = true,
+                    ValidateAudience = false,
+                    ValidateIssuer = false,
+                    //ValidateIssuerSigningKey = true
+                };
+                SecurityToken validatedToken;
+                //tokenHandler.ValidateToken(token.RawData, validationParameters, out validatedToken);
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
