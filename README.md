@@ -33,3 +33,39 @@ tag `string text ${expression} string text`
 * [Get arrows to work for Bash on Windows in ConEmu](https://github.com/Maximus5/ConEmu/issues/629#issuecomment-208801745)
 * [Mouse without borders -- lets you share mouse across desktops](http://downloads.tomsguide.com/Mouse-without-Borders,0301-43255.html)
 * [mPutty -- tabbed putty client](http://ttyplus.com/multi-tabbed-putty/)
+
+## Emacs
+
+```
+C-x C-f Open file.
+C-x C-s Save file.
+C-x C-w Write file.
+C-x C-c Exit Emacs.
+C-l     Center screen.
+C-x u   Undo.
+C-d     Delete character.
+M-d     Delete word.
+C-k     Delete line.
+C-y     Yank
+C-Space Mark region.
+C-w     Kill region.
+M-w     Copy region.
+C-g     Cancel.
+C-s     Forward search.
+C-r     Backward search.
+C-s C-w Search with word as key.
+M-<     Go to the beginning of the file.
+M-%     Query replace.
+
+M-x replace-string
+M-x query-replace
+M-x query-replace-regexp
+M-x replace-regexp
+
+C-x k   Kill buffer.
+C-x 2   Split horizontal.
+C-x o   Other window.
+C-x 0   Close window you're in.
+C-x 1   Close other windows.
+C-x 3   
+```
