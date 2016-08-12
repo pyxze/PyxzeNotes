@@ -68,4 +68,6 @@ C-x o   Other window.
 C-x 0   Close window you're in.
 C-x 1   Close other windows.
 C-x 3   
+
+M-x shell
 ```
