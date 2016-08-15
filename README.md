@@ -73,3 +73,9 @@ M-x shell
 F3      Start recording macro.
 F4      Stop recording / run macro.
 ```
+
+# Python
+
+* [Standard Library](https://docs.python.org/3/library/index.html)
+* [Regex](https://docs.python.org/3/library/re.html)
+* [IO](https://docs.python.org/3/library/io.html)
