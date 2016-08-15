@@ -1,0 +1,17 @@
+import re
+from sets import Set
+
+zoo = set()
+
+with open('processedrosterproxylog.txt', 'r') as f:
+    for line in f:
+        m = re.match(".+\<IN_PROV\>(.+)\<\/IN_PROV\>", line)
+        if not m is None:
+            zoo.add(m.group(1))
+
+zoolist = list(zoo)
+zoolist.sort()
+
+for z in zoolist:
+    print z
+
