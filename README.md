@@ -70,4 +70,6 @@ C-x 1   Close other windows.
 C-x 3   
 
 M-x shell
+F3      Start recording macro.
+F4      Stop recording / run macro.
 ```
