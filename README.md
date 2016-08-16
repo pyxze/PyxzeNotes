@@ -72,6 +72,8 @@ C-x 3
 M-x shell
 F3      Start recording macro.
 F4      Stop recording / run macro.
+
+C-x C-e Eval Lisp in editor.
 ```
 
 # Python
