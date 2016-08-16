@@ -33,6 +33,7 @@ tag `string text ${expression} string text`
 * [Get arrows to work for Bash on Windows in ConEmu](https://github.com/Maximus5/ConEmu/issues/629#issuecomment-208801745)
 * [Mouse without borders -- lets you share mouse across desktops](http://downloads.tomsguide.com/Mouse-without-Borders,0301-43255.html)
 * [mPutty -- tabbed putty client](http://ttyplus.com/multi-tabbed-putty/)
+* [JavaScript Interview Topics](https://github.com/adam-s/js-interview-review)
 
 ## Emacs
 
