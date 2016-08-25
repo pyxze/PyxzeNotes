@@ -87,3 +87,10 @@ C-x C-e Eval Lisp in editor.
 
 * [DataGrip by JetBrains -- multiple](https://www.jetbrains.com/datagrip/)
 * [pgAdmin for postgres](https://www.pgadmin.org/)
+
+# NodeJS
+
+* [Nodemon to restart app on file change](https://github.com/remy/nodemon)
+```
+npm install -g nodemon
+```
