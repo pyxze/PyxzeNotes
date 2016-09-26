@@ -94,3 +94,8 @@ C-x C-e Eval Lisp in editor.
 ```
 npm install -g nodemon
 ```
+# Drupal
+
+* [Install Composer globally](https://getcomposer.org/doc/00-intro.md)
+* [Install Drush via composer](http://docs.drush.org/en/master/install-alternative/)
+* [Drush aliases file](https://www.mikestiv.com/set-up-drush-alias)
