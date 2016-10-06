@@ -1,4 +1,5 @@
- 
+## Csharp
+
 * [Serialize an object to JSON](http://www.newtonsoft.com/json/help/html/SerializeObject.htm)
 * [JSON to Csharp](http://json2csharp.com/)
 * [JSON validator](https://jsonformatter.curiousconcept.com/)
@@ -7,6 +8,7 @@
 string s = Regex.Replace(s, @"\bwest\b", "something");
 ```
 * [CSV Helper](https://joshclose.github.io/CsvHelper/)
+* [Table-valued parameters](https://msdn.microsoft.com/en-us/library/bb675163(v=vs.110).aspx)
 
 ## React
 
