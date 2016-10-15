@@ -4,6 +4,9 @@
 * [Using field collections in Drupal 7](https://www.youtube.com/watch?v=1V1ofpgUw-Y)
 * [Field collection module](https://www.drupal.org/project/field_collection)
 
+## PHP
+* [Taking PHP seriously](https://news.ycombinator.com/item?id=12703751)
+
 ## Csharp
 * [Custom date time](https://msdn.microsoft.com/en-us/library/8kb3ddd4(v=vs.110).aspx)
 * [String Format](https://msdn.microsoft.com/en-us/library/system.string.format(v=vs.110).aspx)
