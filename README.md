@@ -1,3 +1,11 @@
+## Docker
+```
+docker run -d -p 8080:80 -p 8022:22 -t wadmiraal/drupal:7
+docker commit -m "Commit message." ID TAG
+npm install -g browser-sync
+browser-sync start --server --files -f index.html
+```
+
 ## Drupal
 * [When not to use Drupal](https://www.youtube.com/watch?v=Ya4NotZNc4Y)
 * [Paragraphs](http://www.paulrowell.com/my-thoughts/repeatable-fieldsets-drupal-paragraphs)
