@@ -12,6 +12,7 @@ browser-sync start --server --files -f index.html
 * [Paragraphs](http://www.paulrowell.com/my-thoughts/repeatable-fieldsets-drupal-paragraphs)
 * [Using field collections in Drupal 7](https://www.youtube.com/watch?v=1V1ofpgUw-Y)
 * [Field collection module](https://www.drupal.org/project/field_collection)
+* [Drupal 7 or 8](https://www.youtube.com/watch?v=vfnQnwOne3c)
 
 ## PHP
 * [Taking PHP seriously](https://news.ycombinator.com/item?id=12703751)
