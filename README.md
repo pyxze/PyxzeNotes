@@ -1,5 +1,7 @@
 * [You might not need underscore](https://www.reindex.io/blog/you-might-not-need-underscore/)
 
+
+
 ## Docker/Npm/Web
 * [Html5Boilerplate / Initializr](http://www.initializr.com/)
 ```
@@ -15,6 +17,19 @@ browser-sync start --server --files -f index.html
 * [Using field collections in Drupal 7](https://www.youtube.com/watch?v=1V1ofpgUw-Y)
 * [Field collection module](https://www.drupal.org/project/field_collection)
 * [Drupal 7 or 8](https://www.youtube.com/watch?v=vfnQnwOne3c)
+
+## .NET Core
+* [ASP.Net Generator](https://github.com/OmniSharp/generator-aspnet)
+```
+npm install -g yo
+npm install -g bower
+npm install -g generator-aspnet
+yo aspnet
+```
+* [System.Data.SqlClient](https://www.nuget.org/packages/System.Data.SqlClient/)
+```
+Add "System.Data.SqlClient": "4.1.0" to project.json
+```
 
 ## PHP
 * [Taking PHP seriously](https://news.ycombinator.com/item?id=12703751)
