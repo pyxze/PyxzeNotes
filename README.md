@@ -30,6 +30,7 @@ yo aspnet
 ```
 Add "System.Data.SqlClient": "4.1.0" to project.json
 ```
+* [Microsoft .NET Core Page](https://www.microsoft.com/net/core)
 
 ## PHP
 * [Taking PHP seriously](https://news.ycombinator.com/item?id=12703751)
