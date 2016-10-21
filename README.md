@@ -154,3 +154,11 @@ npm install -g nodemon
 * [Install Composer globally](https://getcomposer.org/doc/00-intro.md)
 * [Install Drush via composer](http://docs.drush.org/en/master/install-alternative/)
 * [Drush aliases file](https://www.mikestiv.com/set-up-drush-alias)
+
+# Webdev
+
+```
+document.addEventListener("DOMContentLoaded", function(){
+  // Handler when the DOM is fully loaded
+});
+```
