@@ -18,6 +18,13 @@ browser-sync start --server --files -f index.html
 * [Using field collections in Drupal 7](https://www.youtube.com/watch?v=1V1ofpgUw-Y)
 * [Field collection module](https://www.drupal.org/project/field_collection)
 * [Drupal 7 or 8](https://www.youtube.com/watch?v=vfnQnwOne3c)
+```
+php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
+php -r "if (hash_file('SHA384', 'composer-setup.php') === 'e115a8dc7871f15d853148a7fbac7da27d6c0030b848d9b3dc09e2a0388afed865e6a3d6b3c0fad45c48e2b5fc1196ae') { echo 'Installer verified'; } else { echo 'Installer corrupt'; unlink('composer-setup.php'); } echo PHP_EOL;"
+php composer-setup.php
+php -r "unlink('composer-setup.php');"
+composer global require drush/drush
+```
 
 ## .NET Core
 * [ASP.Net Generator](https://github.com/OmniSharp/generator-aspnet)
