@@ -27,6 +27,8 @@ php -r "unlink('composer-setup.php');"
 php -r "readfile('https://s3.amazonaws.com/files.drush.org/drush.phar');" > drush
 chmod +x drush
 sudo mv drush /usr/local/bin
+
+curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
 ```
 
 ## .NET Core
