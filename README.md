@@ -1,7 +1,3 @@
-* [You might not need underscore](https://www.reindex.io/blog/you-might-not-need-underscore/)
-
-
-
 ## Docker/Npm/Web
 * [Html5Boilerplate / Initializr](http://www.initializr.com/)
 ```
@@ -81,14 +77,7 @@ string s = Regex.Replace(s, @"\bwest\b", "something");
 
 tag `string text ${expression} string text`
 ```
-
-## Temporary
-
-* [Web Extension Pack](https://visualstudiogallery.msdn.microsoft.com/f3b504c6-0095-42f1-a989-51d5fc2a8459)
-* [Get arrows to work for Bash on Windows in ConEmu](https://github.com/Maximus5/ConEmu/issues/629#issuecomment-208801745)
-* [Mouse without borders -- lets you share mouse across desktops](http://downloads.tomsguide.com/Mouse-without-Borders,0301-43255.html)
-* [mPutty -- tabbed putty client](http://ttyplus.com/multi-tabbed-putty/)
-* [JavaScript Interview Topics](https://github.com/adam-s/js-interview-review)
+* [You might not need underscore](https://www.reindex.io/blog/you-might-not-need-underscore/)
 
 ## Emacs
 
@@ -162,3 +151,11 @@ document.addEventListener("DOMContentLoaded", function(){
   // Handler when the DOM is fully loaded
 });
 ```
+
+## Temporary
+
+* [Web Extension Pack](https://visualstudiogallery.msdn.microsoft.com/f3b504c6-0095-42f1-a989-51d5fc2a8459)
+* [Get arrows to work for Bash on Windows in ConEmu](https://github.com/Maximus5/ConEmu/issues/629#issuecomment-208801745)
+* [Mouse without borders -- lets you share mouse across desktops](http://downloads.tomsguide.com/Mouse-without-Borders,0301-43255.html)
+* [mPutty -- tabbed putty client](http://ttyplus.com/multi-tabbed-putty/)
+* [JavaScript Interview Topics](https://github.com/adam-s/js-interview-review)
