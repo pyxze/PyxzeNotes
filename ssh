@@ -1,5 +1,6 @@
 ssh-keygen
 
+~/.ssh/config
 Host dev
     HostName dev.example.com
     Port 22000
