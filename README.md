@@ -58,6 +58,9 @@ string s = Regex.Replace(s, @"\bwest\b", "something");
 ```
 * [CSV Helper](https://joshclose.github.io/CsvHelper/)
 * [Table-valued parameters](https://msdn.microsoft.com/en-us/library/bb675163(v=vs.110).aspx)
+```
+String.Format("The current price is {0} per ounce.", pricePerOunce);
+```
 
 ## React
 
