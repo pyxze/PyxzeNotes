@@ -155,6 +155,12 @@ document.addEventListener("DOMContentLoaded", function(){
 });
 ```
 
+# SQL Server
+* [Connect to SQL Server using Windows authentication over VPN](http://stackoverflow.com/questions/9671904/connect-to-sql-via-windows-authentification-over-vpn)
+```
+runas /noprofile /netonly /user:domain\username ssms.exe
+```
+
 ## Temporary
 
 * [Web Extension Pack](https://visualstudiogallery.msdn.microsoft.com/f3b504c6-0095-42f1-a989-51d5fc2a8459)
