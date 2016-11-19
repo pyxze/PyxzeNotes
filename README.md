@@ -6,6 +6,13 @@ sudo docker exec -i -t dockerdockerdocker /bin/bash
 docker commit -m "Commit message." ID TAG
 npm install -g browser-sync
 browser-sync start --server --files -f index.html
+
+docker run -d -p 5000:5000 --name core -t microsoft/dotnet:latest
+mkdir core
+cd core
+dotnet new -t web
+dotnet restore
+ASPNETCORE_URLS="https://*:5000" docker run
 ```
 
 ## Drupal
