@@ -13,7 +13,7 @@ mkdir core
 cd core
 dotnet new -t web
 dotnet restore
-ASPNETCORE_URLS="https://*:5000" docker run
+ASPNETCORE_URLS="https://*:5000" dotnet run
 ```
 
 ## Drupal
