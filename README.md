@@ -2,7 +2,7 @@
 * [Html5Boilerplate / Initializr](http://www.initializr.com/)
 ```
 docker run -d -p 8080:80 -name dockerdockerdocker -t wadmiraal/drupal:7
-sudo docker exec -i -t TID /bin/bash
+sudo docker exec -i -t dockerdockerdocker /bin/bash
 docker commit -m "Commit message." ID TAG
 npm install -g browser-sync
 browser-sync start --server --files -f index.html
