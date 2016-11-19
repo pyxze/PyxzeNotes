@@ -2,12 +2,13 @@
 * [Html5Boilerplate / Initializr](http://www.initializr.com/)
 ```
 docker run -d -p 8080:80 -name dockerdockerdocker -t wadmiraal/drupal:7
-sudo docker exec -i -t dockerdockerdocker /bin/bash
+docker exec -i -t dockerdockerdocker /bin/bash
 docker commit -m "Commit message." ID TAG
 npm install -g browser-sync
 browser-sync start --server --files -f index.html
 
 docker run -d -p 5000:5000 --name core -t microsoft/dotnet:latest
+docker exec -i -t core /bin/bash
 mkdir core
 cd core
 dotnet new -t web
