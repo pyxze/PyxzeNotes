@@ -1,5 +1,3 @@
-# test 2
-
 ## Docker/Npm/Web
 * [Html5Boilerplate / Initializr](http://www.initializr.com/)
 ```
