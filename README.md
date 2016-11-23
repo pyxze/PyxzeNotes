@@ -1,5 +1,3 @@
-test5
-
 ## Docker/Npm/Web
 * [Html5Boilerplate / Initializr](http://www.initializr.com/)
 ```
@@ -179,3 +177,4 @@ runas /noprofile /netonly /user:domain\username ssms.exe
 * [Mouse without borders -- lets you share mouse across desktops](http://downloads.tomsguide.com/Mouse-without-Borders,0301-43255.html)
 * [mPutty -- tabbed putty client](http://ttyplus.com/multi-tabbed-putty/)
 * [JavaScript Interview Topics](https://github.com/adam-s/js-interview-review)
+* [API based headless "cms"](https://css-tricks.com/api-based-cms-approach/)
