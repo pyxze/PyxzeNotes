@@ -56,6 +56,7 @@ Add "System.Data.SqlClient": "4.1.0" to project.json
 * [Taking PHP seriously](https://news.ycombinator.com/item?id=12703751)
 
 ## Csharp
+* [Regex Replace using function(delegate)](http://stackoverflow.com/a/11846853/1446997)
 * [Custom date time](https://msdn.microsoft.com/en-us/library/8kb3ddd4(v=vs.110).aspx)
 * [String Format](https://msdn.microsoft.com/en-us/library/system.string.format(v=vs.110).aspx)
 * [SQL Command Prepare](https://msdn.microsoft.com/en-us/library/system.data.sqlclient.sqlcommand.prepare(v=vs.110).aspx)
