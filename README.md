@@ -1,4 +1,6 @@
-test586
+## Moore's Law
+
+* [What happens with the end of Moore's law? (YouTube)](https://www.youtube.com/watch?v=MI366V-M7I0)
 
 ## Docker/Npm/Web
 * [Html5Boilerplate / Initializr](http://www.initializr.com/)
