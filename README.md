@@ -1,6 +1,8 @@
 ## Moore's Law
 
 * [What happens with the end of Moore's law? (YouTube)](https://www.youtube.com/watch?v=MI366V-M7I0)
+* [Economist issue on Moore's law](http://www.economist.com/technology-quarterly/2016-03-12)
+* [Nature Journal on Moore's Law](http://www.nature.com/news/the-chips-are-down-for-moore-s-law-1.19338)
 
 ## Docker/Npm/Web
 * [Html5Boilerplate / Initializr](http://www.initializr.com/)
