@@ -1,3 +1,11 @@
+## Nginx
+* [Nginx for Windows](http://nginx.org/en/docs/windows.html)
+```
+nginx start
+nginx -s quit
+nginx -s reload
+```
+
 ## Moore's Law
 
 * [What happens with the end of Moore's law? (YouTube)](https://www.youtube.com/watch?v=MI366V-M7I0)
