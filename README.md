@@ -193,3 +193,21 @@ runas /noprofile /netonly /user:domain\username ssms.exe
 * [mPutty -- tabbed putty client](http://ttyplus.com/multi-tabbed-putty/)
 * [JavaScript Interview Topics](https://github.com/adam-s/js-interview-review)
 * [API based headless "cms"](https://css-tricks.com/api-based-cms-approach/)
+
+## Oracle
+
+```
+            string oradb = "Data Source=(DESCRIPTION=(ADDRESS=(PROTOCOL=tcp)(HOST=db)(PORT=1521))(CONNECT_DATA=(SERVICE_NAME=service)));User Id=username;Password=password;";
+            OracleConnection conn = new OracleConnection(oradb);
+            conn.Open();
+            OracleCommand cmd = new OracleCommand();
+            cmd.Connection = conn;
+            cmd.CommandText = "update table set field = 'X' where field_id = :id";
+            cmd.CommandType = CommandType.Text;
+            OracleParameter[] parameters = new OracleParameter[] {
+                new OracleParameter("id", 123456)
+            };
+            cmd.Parameters.AddRange(parameters);
+            cmd.ExecuteNonQuery();
+            conn.Dispose();
+```
