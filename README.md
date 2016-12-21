@@ -211,3 +211,9 @@ runas /noprofile /netonly /user:domain\username ssms.exe
             cmd.ExecuteNonQuery();
             conn.Dispose();
 ```
+### Misc
+
+* Pretty print JSON and count ORDR results
+```
+python -m json.tool results.json | grep -c ORDR
+```
