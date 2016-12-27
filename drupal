@@ -7,3 +7,5 @@ drush dl admin_menu
 drush dl coffee
 drush dl module_filter
 drush dl module_instructions
+
+drush en paragraphs
