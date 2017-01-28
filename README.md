@@ -157,6 +157,10 @@ C-x C-e Eval Lisp in editor.
 * [Standard Library](https://docs.python.org/3/library/index.html)
 * [Regex](https://docs.python.org/3/library/re.html)
 * [IO](https://docs.python.org/3/library/io.html)
+* Start web server
+```
+python -m http.server [<portNo>]
+```
 
 # Database Clients
 
