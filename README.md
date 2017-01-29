@@ -1,8 +1,8 @@
-## Raspberry Pi / Arduino
+# Raspberry Pi / Arduino
 
 * https://www.dataplicity.com/
 
-## Nginx
+# Nginx
 * [Nginx for Windows](http://nginx.org/en/docs/windows.html)
 ```
 nginx start
@@ -10,13 +10,13 @@ nginx -s quit
 nginx -s reload
 ```
 
-## Moore's Law
+# Moore's Law
 
 * [What happens with the end of Moore's law? (YouTube)](https://www.youtube.com/watch?v=MI366V-M7I0)
 * [Economist issue on Moore's law](http://www.economist.com/technology-quarterly/2016-03-12)
 * [Nature Journal on Moore's Law](http://www.nature.com/news/the-chips-are-down-for-moore-s-law-1.19338)
 
-## Docker/Npm/Web
+# Docker/Npm/Web
 * [Html5Boilerplate / Initializr](http://www.initializr.com/)
 ```
 docker run -d -p 8080:80 -name dockerdockerdocker -t wadmiraal/drupal:7
@@ -34,7 +34,7 @@ dotnet restore
 ASPNETCORE_URLS="https://*:5000" dotnet run
 ```
 
-## Drupal
+# Drupal
 * [When not to use Drupal](https://www.youtube.com/watch?v=Ya4NotZNc4Y)
 * [Paragraphs](http://www.paulrowell.com/my-thoughts/repeatable-fieldsets-drupal-paragraphs)
 * [Using field collections in Drupal 7](https://www.youtube.com/watch?v=1V1ofpgUw-Y)
@@ -54,7 +54,7 @@ curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
 ```
 * [Phase 2](https://www.phase2technology.com/)
 
-## .NET Core
+# .NET Core
 * [ASP.Net Generator](https://github.com/OmniSharp/generator-aspnet)
 ```
 npm install -g yo
@@ -68,10 +68,10 @@ Add "System.Data.SqlClient": "4.1.0" to project.json
 ```
 * [Microsoft .NET Core Page](https://www.microsoft.com/net/core)
 
-## PHP
+# PHP
 * [Taking PHP seriously](https://news.ycombinator.com/item?id=12703751)
 
-## Csharp
+# Csharp
 * [Regex Replace using function(delegate)](http://stackoverflow.com/a/11846853/1446997)
 * [Custom date time](https://msdn.microsoft.com/en-us/library/8kb3ddd4(v=vs.110).aspx)
 * [String Format](https://msdn.microsoft.com/en-us/library/system.string.format(v=vs.110).aspx)
@@ -90,12 +90,12 @@ string s = Regex.Replace(s, @"\bwest\b", "something");
 String.Format("The current price is {0} per ounce.", pricePerOunce);
 ```
 
-## React
+# React
 
 * [My React Demo](https://jsfiddle.net/jasoncromero/m8vbtub1/)
 * [Thinking in React](https://facebook.github.io/react/docs/thinking-in-react.html)
 
-## Javascript
+# Javascript
 
 * [ES6 String Interpolation!](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals)
 ```
@@ -110,7 +110,7 @@ tag `string text ${expression} string text`
 ```
 * [You might not need underscore](https://www.reindex.io/blog/you-might-not-need-underscore/)
 
-## Emacs
+# Emacs
 
 ```
 C-x C-f Open file.
@@ -193,7 +193,7 @@ document.addEventListener("DOMContentLoaded", function(){
 runas /noprofile /netonly /user:domain\username ssms.exe
 ```
 
-## Temporary
+# Temporary
 
 * [Web Extension Pack](https://visualstudiogallery.msdn.microsoft.com/f3b504c6-0095-42f1-a989-51d5fc2a8459)
 * [Get arrows to work for Bash on Windows in ConEmu](https://github.com/Maximus5/ConEmu/issues/629#issuecomment-208801745)
@@ -202,7 +202,7 @@ runas /noprofile /netonly /user:domain\username ssms.exe
 * [JavaScript Interview Topics](https://github.com/adam-s/js-interview-review)
 * [API based headless "cms"](https://css-tricks.com/api-based-cms-approach/)
 
-## Oracle
+# Oracle
 
 ```
             string oradb = "Data Source=(DESCRIPTION=(ADDRESS=(PROTOCOL=tcp)(HOST=db)(PORT=1521))(CONNECT_DATA=(SERVICE_NAME=service)));User Id=username;Password=password;";
@@ -219,14 +219,14 @@ runas /noprofile /netonly /user:domain\username ssms.exe
             cmd.ExecuteNonQuery();
             conn.Dispose();
 ```
-### Misc
+# Misc
 
 * Pretty print JSON and count ORDR results
 ```
 python -m json.tool results.json | grep -c ORDR
 ```
 
-### JavaScript
+# JavaScript
 
 * [Pusher](https://pusher.com/)
 * [PubNub](https://www.pubnub.com/)
