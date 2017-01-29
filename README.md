@@ -225,3 +225,8 @@ runas /noprofile /netonly /user:domain\username ssms.exe
 ```
 python -m json.tool results.json | grep -c ORDR
 ```
+
+### JavaScript
+
+* [Pusher](https://pusher.com/)
+* [PubNub](https://www.pubnub.com/)
