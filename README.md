@@ -161,6 +161,13 @@ C-x C-e Eval Lisp in editor.
 ```
 python -m http.server [<portNo>]
 ```
+* [For each file ...](http://stackoverflow.com/a/3964691)
+```
+import glob, os
+os.chdir("/mydir")
+for file in glob.glob("*.txt"):
+    print(file)
+```
 
 # Database Clients
 
