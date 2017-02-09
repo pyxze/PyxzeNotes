@@ -1,3 +1,4 @@
+* [Practical Introduction to Functional Programming](https://maryrosecook.com/blog/post/a-practical-introduction-to-functional-programming)
 
 # Csharp
 * [Regex Replace using function(delegate)](http://stackoverflow.com/a/11846853/1446997)
