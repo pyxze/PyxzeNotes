@@ -1,20 +1,22 @@
-# Raspberry Pi / Arduino
 
-* https://www.dataplicity.com/
-
-# Nginx
-* [Nginx for Windows](http://nginx.org/en/docs/windows.html)
+# Csharp
+* [Regex Replace using function(delegate)](http://stackoverflow.com/a/11846853/1446997)
+* [Custom date time](https://msdn.microsoft.com/en-us/library/8kb3ddd4(v=vs.110).aspx)
+* [String Format](https://msdn.microsoft.com/en-us/library/system.string.format(v=vs.110).aspx)
+* [SQL Command Prepare](https://msdn.microsoft.com/en-us/library/system.data.sqlclient.sqlcommand.prepare(v=vs.110).aspx)
+* [SQL Command Parameter](https://msdn.microsoft.com/en-us/library/system.data.sqlclient.sqlcommand.parameters(v=vs.110).aspx)
+* [Serialize an object to JSON](http://www.newtonsoft.com/json/help/html/SerializeObject.htm)
+* [JSON to Csharp](http://json2csharp.com/)
+* [JSON validator](https://jsonformatter.curiousconcept.com/)
+* [Csharp regex string replace](http://stackoverflow.com/a/2771058)
 ```
-nginx start
-nginx -s quit
-nginx -s reload
+string s = Regex.Replace(s, @"\bwest\b", "something");
 ```
-
-# Moore's Law
-
-* [What happens with the end of Moore's law? (YouTube)](https://www.youtube.com/watch?v=MI366V-M7I0)
-* [Economist issue on Moore's law](http://www.economist.com/technology-quarterly/2016-03-12)
-* [Nature Journal on Moore's Law](http://www.nature.com/news/the-chips-are-down-for-moore-s-law-1.19338)
+* [CSV Helper](https://joshclose.github.io/CsvHelper/)
+* [Table-valued parameters](https://msdn.microsoft.com/en-us/library/bb675163(v=vs.110).aspx)
+```
+String.Format("The current price is {0} per ounce.", pricePerOunce);
+```
 
 # Docker/Npm/Web
 * [Html5Boilerplate / Initializr](http://www.initializr.com/)
@@ -53,62 +55,11 @@ sudo mv drush /usr/local/bin
 curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
 ```
 * [Phase 2](https://www.phase2technology.com/)
+* [Install Composer globally](https://getcomposer.org/doc/00-intro.md)
+* [Install Drush via composer](http://docs.drush.org/en/master/install-alternative/)
+* [Drush aliases file](https://www.mikestiv.com/set-up-drush-alias)
 
-# .NET Core
-* [ASP.Net Generator](https://github.com/OmniSharp/generator-aspnet)
-```
-npm install -g yo
-npm install -g bower
-npm install -g generator-aspnet
-yo aspnet
-```
-* [System.Data.SqlClient](https://www.nuget.org/packages/System.Data.SqlClient/)
-```
-Add "System.Data.SqlClient": "4.1.0" to project.json
-```
-* [Microsoft .NET Core Page](https://www.microsoft.com/net/core)
 
-# PHP
-* [Taking PHP seriously](https://news.ycombinator.com/item?id=12703751)
-
-# Csharp
-* [Regex Replace using function(delegate)](http://stackoverflow.com/a/11846853/1446997)
-* [Custom date time](https://msdn.microsoft.com/en-us/library/8kb3ddd4(v=vs.110).aspx)
-* [String Format](https://msdn.microsoft.com/en-us/library/system.string.format(v=vs.110).aspx)
-* [SQL Command Prepare](https://msdn.microsoft.com/en-us/library/system.data.sqlclient.sqlcommand.prepare(v=vs.110).aspx)
-* [SQL Command Parameter](https://msdn.microsoft.com/en-us/library/system.data.sqlclient.sqlcommand.parameters(v=vs.110).aspx)
-* [Serialize an object to JSON](http://www.newtonsoft.com/json/help/html/SerializeObject.htm)
-* [JSON to Csharp](http://json2csharp.com/)
-* [JSON validator](https://jsonformatter.curiousconcept.com/)
-* [Csharp regex string replace](http://stackoverflow.com/a/2771058)
-```
-string s = Regex.Replace(s, @"\bwest\b", "something");
-```
-* [CSV Helper](https://joshclose.github.io/CsvHelper/)
-* [Table-valued parameters](https://msdn.microsoft.com/en-us/library/bb675163(v=vs.110).aspx)
-```
-String.Format("The current price is {0} per ounce.", pricePerOunce);
-```
-
-# React
-
-* [My React Demo](https://jsfiddle.net/jasoncromero/m8vbtub1/)
-* [Thinking in React](https://facebook.github.io/react/docs/thinking-in-react.html)
-
-# Javascript
-
-* [ES6 String Interpolation!](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals)
-```
-`string text`
-
-`string text line 1
- string text line 2`
-
-`string text ${expression} string text`
-
-tag `string text ${expression} string text`
-```
-* [You might not need underscore](https://www.reindex.io/blog/you-might-not-need-underscore/)
 
 # Emacs
 
@@ -152,6 +103,51 @@ F4      Stop recording / run macro.
 C-x C-e Eval Lisp in editor.
 ```
 
+
+# Javascript
+
+* [ES6 String Interpolation!](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals)
+```
+`string text`
+
+`string text line 1
+ string text line 2`
+
+`string text ${expression} string text`
+
+tag `string text ${expression} string text`
+```
+* [You might not need underscore](https://www.reindex.io/blog/you-might-not-need-underscore/)
+```
+document.addEventListener("DOMContentLoaded", function(){
+  // Handler when the DOM is fully loaded
+});
+```
+* [Pusher](https://pusher.com/)
+* [PubNub](https://www.pubnub.com/)
+
+# .NET Core
+* [ASP.Net Generator](https://github.com/OmniSharp/generator-aspnet)
+```
+npm install -g yo
+npm install -g bower
+npm install -g generator-aspnet
+yo aspnet
+```
+* [System.Data.SqlClient](https://www.nuget.org/packages/System.Data.SqlClient/)
+```
+Add "System.Data.SqlClient": "4.1.0" to project.json
+```
+* [Microsoft .NET Core Page](https://www.microsoft.com/net/core)
+
+
+# Nginx
+* [Nginx for Windows](http://nginx.org/en/docs/windows.html)
+```
+nginx start
+nginx -s quit
+nginx -s reload
+```
 # Python
 
 * [Standard Library](https://docs.python.org/3/library/index.html)
@@ -168,6 +164,33 @@ os.chdir("/mydir")
 for file in glob.glob("*.txt"):
     print(file)
 ```
+* [For each line in file ...](http://stackoverflow.com/a/8010133/1446997)
+```
+with open(...) as f:
+    for line in f:
+        <do something with line>
+```
+* Pretty print JSON and count ORDR results
+```
+python -m json.tool results.json | grep -c ORDR
+```
+
+
+# PHP
+* [Taking PHP seriously](https://news.ycombinator.com/item?id=12703751)
+
+# Raspberry Pi / Arduino
+
+* https://www.dataplicity.com/
+
+
+
+# React
+
+* [My React Demo](https://jsfiddle.net/jasoncromero/m8vbtub1/)
+* [Thinking in React](https://facebook.github.io/react/docs/thinking-in-react.html)
+
+
 
 # Database Clients
 
@@ -182,17 +205,10 @@ npm install -g nodemon
 ```
 # Drupal
 
-* [Install Composer globally](https://getcomposer.org/doc/00-intro.md)
-* [Install Drush via composer](http://docs.drush.org/en/master/install-alternative/)
-* [Drush aliases file](https://www.mikestiv.com/set-up-drush-alias)
 
 # Webdev
 
-```
-document.addEventListener("DOMContentLoaded", function(){
-  // Handler when the DOM is fully loaded
-});
-```
+
 
 # SQL Server
 * [Connect to SQL Server using Windows authentication over VPN](http://stackoverflow.com/questions/9671904/connect-to-sql-via-windows-authentification-over-vpn)
@@ -226,14 +242,4 @@ runas /noprofile /netonly /user:domain\username ssms.exe
             cmd.ExecuteNonQuery();
             conn.Dispose();
 ```
-# Misc
 
-* Pretty print JSON and count ORDR results
-```
-python -m json.tool results.json | grep -c ORDR
-```
-
-# JavaScript
-
-* [Pusher](https://pusher.com/)
-* [PubNub](https://www.pubnub.com/)
