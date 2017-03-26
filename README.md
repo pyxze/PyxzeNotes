@@ -126,6 +126,8 @@ document.addEventListener("DOMContentLoaded", function(){
 ```
 * [Pusher](https://pusher.com/)
 * [PubNub](https://www.pubnub.com/)
+* Long Polling with Promises https://davidwalsh.name/javascript-polling
+* Long Polling Classic and Sockets https://techoctave.com/c7/posts/60-simple-long-polling-example-with-javascript-and-jquery
 
 # .NET Core
 * [ASP.Net Generator](https://github.com/OmniSharp/generator-aspnet)
