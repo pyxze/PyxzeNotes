@@ -22,6 +22,13 @@ String.Format("The current price is {0} per ounce.", pricePerOunce);
 # Docker/Npm/Web
 * [Html5Boilerplate / Initializr](http://www.initializr.com/)
 ```
+docker run -d -p 8080:8080 --name debian -t debian:latest
+docker exec -it debian /bin/bash
+cat "deb http://ftp.debian.org/debian jessie-backports main" >> /etc/apt/sources.list
+apt update
+apt install -t jessie-backports openjdk-8-jre -y
+docker rm debian
+
 docker run -d -p 8080:80 -name dockerdockerdocker -t wadmiraal/drupal:7
 docker exec -i -t dockerdockerdocker /bin/bash
 docker commit -m "Commit message." ID TAG
