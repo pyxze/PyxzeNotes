@@ -189,6 +189,27 @@ python -m json.tool results.json | grep -c ORDR
 import base64
 encoded = base64.b64encode(b'data to be encoded')
 ```
+* Connect to Oracle Database on Windows
+  * Install [Python 3.61](https://www.python.org/ftp/python/3.6.1/python-3.6.1-amd64.exe)
+  * Install wheel ```python -m pip install wheel```
+  * Download [cx_Oracle wheel](https://pypi.python.org/packages/98/0f/f8cf7f77dc41833693f4daa286c66005cb1878ff116e7b07573627a30bd1/cx_Oracle-6.0b1-cp36-cp36m-win_amd64.whl#md5=3d0958f6ccc4d42bf4423726e264f7f1) from [PyPI](https://pypi.python.org/pypi/cx_Oracle/6.0b1)
+  * Install cx_Oracle wheel ```python -m pip install cx_Oracle-6.0b1-cp36-cp36m-win_amd64.whl```
+  * Download Oracle Instant Client Package - Basic from [Oracle Download Page](http://www.oracle.com/technetwork/topics/winx64soft-089540.html)
+  * Unzip download, create c:\Oracle\ and move instantclient_12_2 to this folder, then add c:\Oracle\instantclient_12_2 to Path.
+    * Right click start
+    * Click on System
+    * Click on Advanced system settings
+    * Click on Environment Variables
+    * Edit PATH
+  * Install [Visual C++ 2013 Redistributable Package](http://download.microsoft.com/download/0/5/6/056dcda9-d667-4e27-8001-8a0c6971d6b1/vcredist_x64.exe)
+  * Install requirements ```python -m pip install -r requirements.txt```
+```
+cx-Oracle==6.0b1
+et-xmlfile==1.0.1
+jdcal==1.3
+openpyxl==2.4.7
+requests==2.13.0
+```
 
 # PHP
 * [Taking PHP seriously](https://news.ycombinator.com/item?id=12703751)
