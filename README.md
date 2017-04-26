@@ -191,6 +191,7 @@ encoded = base64.b64encode(b'data to be encoded')
 ```
 * Connect to Oracle Database on Windows
   * Install [Python 3.61](https://www.python.org/ftp/python/3.6.1/python-3.6.1-amd64.exe)
+    * Be sure to check option to add Python to path
   * Install wheel ```python -m pip install wheel```
   * Download [cx_Oracle wheel](https://pypi.python.org/packages/98/0f/f8cf7f77dc41833693f4daa286c66005cb1878ff116e7b07573627a30bd1/cx_Oracle-6.0b1-cp36-cp36m-win_amd64.whl#md5=3d0958f6ccc4d42bf4423726e264f7f1) from [PyPI](https://pypi.python.org/pypi/cx_Oracle/6.0b1)
   * Install cx_Oracle wheel ```python -m pip install cx_Oracle-6.0b1-cp36-cp36m-win_amd64.whl```
