@@ -30,6 +30,7 @@ apt install -t jessie-backports openjdk-8-jre -y
 docker rm debian
 
 docker run -d -p 8080:80 -name dockerdockerdocker -t wadmiraal/drupal:7
+Drupal: admin:admin; MySQL: root: (no password); SSH: root:root
 docker exec -i -t dockerdockerdocker /bin/bash
 docker commit -m "Commit message." ID TAG
 npm install -g browser-sync
