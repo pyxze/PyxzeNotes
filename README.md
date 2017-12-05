@@ -20,6 +20,20 @@ string s = Regex.Replace(s, @"\bwest\b", "something");
 String.Format("The current price is {0} per ounce.", pricePerOunce);
 ```
 
+* [Send Email](https://msdn.microsoft.com/en-us/library/system.net.mail.smtpclient(v=vs.110).aspx)
+```
+ SmtpClient client = new SmtpClient("exhybrid");
+ MailAddress from = new MailAddress("alerts@", "Alerts", System.Text.Encoding.UTF8);
+ MailAddress to = new MailAddress("jason.romero@");
+ MailMessage message = new MailMessage(from, to);
+ message.Body = "This is a test e-mail message sent by an application. ";
+ message.BodyEncoding =  System.Text.Encoding.UTF8;
+ message.Subject = "test message 1";
+ message.SubjectEncoding = System.Text.Encoding.UTF8;
+ client.Send(message);
+ message.Dispose();
+```
+
 # Docker/Npm/Web
 * [Html5Boilerplate / Initializr](http://www.initializr.com/)
 ```
