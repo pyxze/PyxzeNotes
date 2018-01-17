@@ -227,6 +227,10 @@ jdcal==1.3
 openpyxl==2.4.7
 requests==2.13.0
 ```
+  * Return date/time string with dst offset
+```
+datetime_with_offset = lambda x: timezone('America/Chicago').localize(datetime.strptime(x, '%Y-%m-%d %H:%M:%S')).strftime('%Y-%m-%dT%H:%M:%S%z')
+```
 
 # PHP
 * [Taking PHP seriously](https://news.ycombinator.com/item?id=12703751)
