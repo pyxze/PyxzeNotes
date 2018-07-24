@@ -1,3 +1,4 @@
+* [Best approach to update npm on windows](https://www.davidyardy.com/blog/update-npm-on-windows%E2%80%93current-best-approach/)
 * [Upgrading postgres 9.3 to 9.4 on windows](https://www.arencambre.com/blog/2014/12/24/postgress-pg_upgrade-on-windows-the-documentation-misses-a-lot/)
 * [Practical Introduction to Functional Programming](https://maryrosecook.com/blog/post/a-practical-introduction-to-functional-programming)
 
