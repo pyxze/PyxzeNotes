@@ -34,6 +34,7 @@ String.Format("The current price is {0} per ounce.", pricePerOunce);
  client.Send(message);
  message.Dispose();
 ```
+* [Retry pattern with Polly](https://alastaircrabtree.com/implementing-the-retry-pattern-using-polly/)
 
 # Docker/Npm/Web
 * [Html5Boilerplate / Initializr](http://www.initializr.com/)
