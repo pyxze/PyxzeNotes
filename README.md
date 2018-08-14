@@ -303,3 +303,12 @@ runas /noprofile /netonly /user:domain\username ssms.exe
             conn.Dispose();
 ```
 
+# Vim
+
+* Retab file
+```
+:set tabstop=4 shiftwidth=4 expandtab
+:retab
+```
+* Move text left/right
+`<< or >>`
