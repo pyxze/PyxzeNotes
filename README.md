@@ -2,6 +2,8 @@
 * [Upgrading postgres 9.3 to 9.4 on windows](https://www.arencambre.com/blog/2014/12/24/postgress-pg_upgrade-on-windows-the-documentation-misses-a-lot/)
 * [Practical Introduction to Functional Programming](https://maryrosecook.com/blog/post/a-practical-introduction-to-functional-programming)
 
+general oracle command syntax to find all references to a colummn - "select table_name from all_tab_columns where column_name = 'APPLC_DPSIT_HIST_ID';"
+
 # Csharp
 * [Regex Replace using function(delegate)](http://stackoverflow.com/a/11846853/1446997)
 * [Custom date time](https://msdn.microsoft.com/en-us/library/8kb3ddd4(v=vs.110).aspx)
