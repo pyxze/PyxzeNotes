@@ -1,3 +1,9 @@
+# initial setup
+sudo snap install emacs --classic
+sudo snap install code --classic
+
+~~~
+
 monitoring tools
 
 http://www.cyberciti.biz/tips/top-linux-monitoring-tools.html
