@@ -1,0 +1,56 @@
+#include <Servo.h>
+
+Servo myservo1;
+Servo myservo2;
+
+uint16_t value;
+
+int myserver1pin = A0;
+int myserver2pin = A6;
+
+int xpin = A1;
+int ypin = A7;
+int buttonPin = A4;
+int ledPin = A5;
+
+int ledState = LOW;         // the current state of the output pin
+int buttonState;             // the current reading from the input pin
+int lastButtonState = HIGH;   // the previous reading from the input pin
+unsigned long lastDebounceTime = 0;  // the last time the output pin was toggled
+unsigned long debounceDelay = 50;    // the debounce time; increase if the output flickers
+
+void setup() {
+  myservo1.attach(myserver1pin);  // attaches the servo on pin 9 to the servo object
+  myservo2.attach(myserver2pin);  // attaches the servo on pin 9 to the servo object  
+  pinMode(A5, OUTPUT);
+}
+
+void loop() {
+
+int reading = digitalRead(buttonPin);
+
+if (reading != lastButtonState) {
+  lastDebounceTime = millis();
+}
+ 
+if ((millis() - lastDebounceTime) > debounceDelay) {
+  if (reading != buttonState) {
+    buttonState = reading;
+    if (buttonState == LOW) {
+      ledState = !ledState;
+    }
+  }
+}
+  
+digitalWrite(ledPin, ledState);
+lastButtonState = reading;
+  
+  value = analogRead(xpin);
+  value = map(value, 0, 1023, 180, 0);
+  myservo1.write(value);
+
+  value = analogRead(ypin);
+  value = map(value, 0, 1023, 80, 0);
+  myservo2.write(value);
+  
+}
