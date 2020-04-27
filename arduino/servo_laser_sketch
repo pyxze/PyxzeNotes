@@ -1,3 +1,7 @@
+// Simple sketch to move a couple of servers and activate a laser.
+// Pins are a little wonky from something breaking and having to move stuff around.
+// (And it stayed broken. :) Also, some weirdness when I tried to comment out part of the code to move stuff around... *shrug*)
+
 #include <Servo.h>
 
 Servo myservo1;
